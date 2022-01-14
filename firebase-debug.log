@@ -1,0 +1,14 @@
+[debug] [2022-01-14T11:51:46.772Z] ----------------------------------------------------------------------
+[debug] [2022-01-14T11:51:46.774Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Watthachai Taechalue\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-01-14T11:51:46.774Z] CLI Version:   10.1.0
+[debug] [2022-01-14T11:51:46.774Z] Platform:      win32
+[debug] [2022-01-14T11:51:46.774Z] Node Version:  v16.13.1
+[debug] [2022-01-14T11:51:46.775Z] Time:          Fri Jan 14 2022 18:51:46 GMT+0700 (Indochina Time)
+[debug] [2022-01-14T11:51:46.775Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-14T11:51:46.819Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-14T11:51:46.820Z] > authorizing via signed-in user (wattchaichai@gmail.com)
+[debug] [2022-01-14T11:51:46.820Z] [iam] checking project smartdrop-itlp2022 for permissions ["firebase.projects.get"]
+[debug] [2022-01-14T11:51:46.821Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-01-14T11:51:46.822Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
