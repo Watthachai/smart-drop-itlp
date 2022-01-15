@@ -38,7 +38,7 @@ const sendVerificationEmail = () => {
     .then(() => {
         console.log('Verification Email Sent Successfully !');
         //redirecting the user to the profile page once everything is done correctly
-        window.location.assign('../profile');
+        window.location.assign('./profile');
     })
     .catch(error => {
         console.error(error);

@@ -10,7 +10,7 @@ logOut.addEventListener('click', () => {
     //signOut() is a built in firebase function responsible for signing a user out
     auth.signOut()
     .then(() => {
-        window.location.assign('../');
+        window.location.assign('./');
     })
     .catch(error => {
         console.error(error);
@@ -23,10 +23,10 @@ auth.onAuthStateChanged(user => {
 
 //Go to modification page
 modifyAccount.addEventListener('click', () => {
-    window.location.assign('../edit');
+    window.location.assign('./edit');
 });
 
 //Go to merge accounts page
 mergeAccounts.addEventListener('click', () => {
-    window.location.assign('../merge');
+    window.location.assign('./merge');
 });
