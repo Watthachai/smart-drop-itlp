@@ -93,5 +93,5 @@ mergeWithGoogleButton.addEventListener('click', mergeAndUnmergeWithGoogle);
 
 //Go to profile page
 back.addEventListener('click', () => {
-    window.location.assign('../profile');
+    window.location.assign('profile.html');
 });

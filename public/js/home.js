@@ -52,7 +52,7 @@ const signInWithPhone = sentCodeId => {
   const credential = firebase.auth.PhoneAuthProvider.credential(sentCodeId, code);
   auth.signInWithCredential(credential)
   .then(() => {
-    window.location.assign('./profile');
+    window.location.assign('profile.html');
   })
   .catch(error => {
     console.error(error);
@@ -66,7 +66,7 @@ const signInWithFacebook = () => {
 
   auth.signInWithPopup(facebookProvider)
   .then(() => {
-    window.location.assign('./profile');
+    window.location.assign('profile.html');
   })
   .catch(error => {
     console.error(error);
@@ -80,7 +80,7 @@ const signInWithTwitter = () => {
 
   auth.signInWithPopup(twitterProvider)
   .then(() => {
-    window.location.assign('./profile');
+    window.location.assign('profile.html');
   })
   .catch(error => {
     console.error(error);
@@ -94,7 +94,7 @@ const signInWithGoogle = () => {
 
   auth.signInWithPopup(googleProvider)
   .then(() => {
-    window.location.assign('./profile');
+    window.location.assign('profile.html');
   })
   .catch(error => {
     console.error(error);
@@ -112,7 +112,7 @@ const signInWithEmailFunction = () => {
   auth.signInWithEmailAndPassword(email, password)
   .then(() => {
     //Signed in successfully
-    window.location.assign('./profile')
+    window.location.assign('__profile')
   })
   .catch(error => {
     //Something went wrong
@@ -127,12 +127,12 @@ signInWithMail.addEventListener('click', signInWithEmailFunction);
 
 //Go to signup page
 signUp.addEventListener('click', () => {
-  window.location.assign('./signup');
+  window.location.assign('signup.html');
 });
 
 auth.onAuthStateChanged(user => {
   if(user)
-    window.location.assign('./profile');
+    window.location.assign('profile.html');
 })
 
 //Animations

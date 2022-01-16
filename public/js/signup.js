@@ -41,7 +41,7 @@ const sendVerificationEmail = () => {
     .then(() => {
         console.log('Verification Email Sent Successfully !');
         //redirecting the user to the profile page once everything is done correctly
-        window.location.assign('../profile');
+        window.location.assign('profile.html');
     })
     .catch(error => {
         console.error(error);
@@ -52,7 +52,7 @@ signUp.addEventListener('click', signUpFunction);
 
 auth.onAuthStateChanged(user => {
     if(user && (state === 0))
-        window.location.assign('../profile');
+        window.location.assign('profile.html');
 })
 
 const showErrorModal = errorMessage => {

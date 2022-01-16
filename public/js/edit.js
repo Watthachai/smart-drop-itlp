@@ -134,7 +134,7 @@ deleteButton.addEventListener('click', deleteAccount);
 editButton.addEventListener('click', editInformation);
 
 backButton.addEventListener('click', () => {
-    window.location.assign('../profile');
+    window.location.assign('profile.html');
 });
 
 //Animations
