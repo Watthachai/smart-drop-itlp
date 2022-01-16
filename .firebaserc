@@ -1,6 +1,5 @@
 {
   "projects": {
-    "smartdrop": "smartdrop-itlp2022"
-  },
-  "targets": {}
+    "default": "smartdrop-itlp2022"
+  }
 }
