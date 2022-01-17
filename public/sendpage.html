@@ -35,7 +35,7 @@
   
                         <div class="card"></div>
                         <input type="tel" id="phone" class="form-control"placeholder="ใส่เบอร์ผู้รับ"required>
-                        <button id="sender">send</button>
+                        <button id="sender">accept</button>
     
                 </div>
               </div>
@@ -74,23 +74,66 @@
 
         var phone = document.getElementById("phone");
         var btnaccept = document.getElementById("sender");
+        var number_sw = 1;
 
         function ChkLocker(){
             const lockerRef = ref(db);
             get(child(lockerRef,"lockers/box1")).then((box1)=>{
                 if(box1.exists()){
-                    update(ref(db,"lockers/box1"),{
-                        owner_p: phone.value,
-                        status_sw: "0"
-                    })
-                    .then(()=>{
-                        alert("เสร็จละ");
-                        console.log(box1.val());
-                    }).catch((error)=>{
-                        alert(error);
-                    });
-                }else{
-                    alert("ไม่มีตู้");
+                    if(box1.val().status_item== 0){
+                        update(ref(db,"lockers/box1"),{
+                            owner_p: phone.value,
+                            status_sw: number_sw
+                        })
+                        .then(()=>{
+                            window.location.assign('waitbox1.html');
+                        })
+                        .catch((error)=>{
+                            alert(error);
+                        });
+                    }else{
+                        get(child(lockerRef,"lockers/box2")).then((box2)=>{
+                            if(box2.exists()){
+                                if(box2.val().status_item==0){
+                                    update(ref(db,"lockers/box2"),{
+                                    owner_p: phone.value,
+                                    status_sw: number_sw
+                                })
+                                .then(()=>{
+                                    window.location.assign('waitbox2.html');
+                                })
+                                .catch((error)=>{
+                                    alert(error);
+                                });
+                                }else{
+                                    get(child(lockerRef,"lockers/box3")).then((box3)=>{
+                                        if(box3.exists()){
+                                            if(box3.val().status_item==0){
+                                                update(ref(db,"lockers/box3"),{
+                                                owner_p: phone.value,
+                                                status_sw: number_sw
+                                            })
+                                            .then(()=>{
+                                                window.location.assign('waitbox3.html');
+                                            })
+                                            .catch((error)=>{
+                                                alert(error);
+                                            });
+                                            }else{
+                                                alert("ตู้เต็ม!");
+                                            }
+                                        }
+                                    })
+                                    .catch((error)=>{
+                                        alert("มีปัญหา"+error);
+                                    });
+                                }
+                            }
+                        })
+                        .catch((error)=>{
+                            alert("มีปัญหา"+error);
+                        });
+                    }
                 }
             })
             .catch((error)=>{
