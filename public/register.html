@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register page</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.6.3/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.6.3/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.6.3/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  </head>
+  <body>
+    <br>
+
+    <!--- Register --->
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          
+              <h1>Register</h1>
+              <label>phone : </label>
+                <input type="tel" id="phone" placeholder="your phone"class="form-control"required>
+                <label>password : </label>
+                <input type="password" id="password"placeholder="your password" class="form-control"required>
+                <label>firstname : </label>
+                <input type="text" id="firstname"placeholder="your firstname"class="form-control"required>
+                <label>lastname : </label>
+                <input type="text" id="lastname"placeholder="your lastname"class="form-control"required><br>
+                <div class="d-grid gap-2 col-6 mx-auto ">
+                  <button class="btn btn-success"id="register">register</button>
+                  <a href="homepagev2.html">back</a>
+                </div>
+          
+        </div>
+      </div>
+
+      <!--- Input phone 
+      <div class="card">
+        <div class="card-body">
+          
+          <h1>กรุณากรอกเบอร์โทรศัพท์ของผู้รับ</h1>
+          <input type="tel" id="phonein" placeholder="กรอกเบอร์โทรศัพท์"class="form-control"required><br>
+          <div class="d-grid gap-2 col-6 mx-auto ">
+            <input type="text" id="test">
+            <button class="btn btn-success"id="accept">ยืนยัน</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    --->
+
+
+
+    <!--- Import + configuration --->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBGHYVjtQNRZIvb0rhUeV6g0ByVAGmidmQ",
+        authDomain: "smartdrop-itlp2022.firebaseapp.com",
+        databaseURL: "https://smartdrop-itlp2022-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "smartdrop-itlp2022",
+        storageBucket: "smartdrop-itlp2022.appspot.com",
+        messagingSenderId: "68583609225",
+        appId: "1:68583609225:web:c14789335702c55eb60758",
+        measurementId: "G-88E68YDK6M"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      import {getDatabase, ref, set, get, child, update, remove} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
+      const db = getDatabase();
+      
+
+      // References
+      var phonebox = document.getElementById("phone");
+      var passwordbox = document.getElementById("password");
+      var firstnamebox = document.getElementById("firstname");
+      var lastnamebox = document.getElementById("lastname");
+      var registerbtn = document.getElementById("register");
+
+
+      var phoneinbox = document.getElementById("phonein");
+      var acceptbtn = document.getElementById("accept");
+      var test = document.getElementById("test");
+
+      // Insert
+      function InsData(){
+        if(phonebox.value != "" && firstnamebox.value != "" && lastnamebox.value != ""){
+          const dbRef = ref(db);
+          get(child(dbRef,"users/"+phonebox.value)).then((snapshot)=>{
+            if(snapshot.exists()){
+              alert("เบอร์นี้ถูกใช้แล้ว!");
+            }else{
+              set(ref(db, "users/"+phonebox.value),{
+              password: passwordbox.value,
+              firstname: firstnamebox.value,
+              lastname: lastnamebox.value
+              })
+              .then(()=>{
+                alert("สมัครสำเร็จ!");
+                window.location.assign("homepagev2.html");
+              })
+              .catch((error)=>{
+                alert("มีปัญหา!"+error);
+              });
+            }
+            })
+          .catch((error)=>{
+            alert("มีปัญหา!"+error);
+            location.reload();
+          });
+
+        }else{
+          alert("กรอกข้อมูลให้ครบก่อน!");
+        }
+      }
+
+      /** Select
+      function SelData(){
+        const dbRef = ref(db);
+
+        get(child(dbRef,"users/"+phoneinbox.value)).then((snapshot)=>{
+            if(snapshot.exists()){
+              test.value = snapshot.val().firstname;
+            }else{
+              alert("ไม่มีข้อมูล!");
+            }
+          })
+          .catch((error)=>{
+            alert("มีปัญหา!"+error);
+            location.reload();
+          });
+      }**/
+
+      //Events button
+      registerbtn.addEventListener('click',InsData);
+      //acceptbtn.addEventListener('click', SelData);
+
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

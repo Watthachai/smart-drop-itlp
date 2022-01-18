@@ -3,6 +3,7 @@ const mergeAccounts = document.getElementById('mergeAccounts');
 const modifyAccount = document.getElementById('modifyAccount');
 const displayNameHolder = document.getElementById('displayNameHolder');
 const photoHolder = document.getElementById('photoHolder');
+const displayPhoneNumber = document.getElementById('displayPhoneNumber');
 
 const auth = firebase.auth();
 
@@ -22,6 +23,7 @@ auth.onAuthStateChanged(user => {
     //display the displayName and photoURL of the user on the page
     if(user.displayName)
         displayNameHolder.innerText = user.displayName;
+        displayPhoneNumber.innerText = user.phoneNumber;
     if(user.photoURL)
         photoHolder.setAttribute('src', user.photoURL);
 })

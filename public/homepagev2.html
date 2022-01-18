@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าแรก</title>
+    <title>Document</title>
 </head>
 <body>
-    <div class="container" align="center">   
-        <div class="row">
-            <div class="col-sm-6">
-                <a href="sendpage.html" class="btn btn-warning">ส่งของ</a>
-            </div>
-            <div class="col-sm-6">
-                <a href="homepagev2.html" class="btn btn-success">รับของ</a>
-            </div>
-        </div>
+    <div class="container">
+        <input type="text" id="phone">
+        <input type="password" id="password">
+        <button id="login">login</button>
+        <a href="register.html">register</a>
+        <a href="index.html">back</a>
     </div>
+
 
     <script type="module">
         // Import the functions you need from the SDKs you need
@@ -44,12 +42,29 @@
 
         import {getDatabase, ref, set, get, child, update, remove} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
         const db = getDatabase();
+        var phonebox = document.getElementById("phone");
+        var passwordbox = document.getElementById("password");
+        var loginbtn = document.getElementById("login");
 
-
-        
-
+        function chkLogin(){
+            const refDB = ref(db);
+            get(child(refDB,"users/"+phonebox.value)).then((e)=>{
+                if(e.exists()){
+                    if(e.val().password == passwordbox.value){
+                        localStorage.setItem("phone",phonebox.value);
+                        //console.log(sessionStorage.getItem("phone"));
+                        window.location.assign("receive.html");
+                    }else{
+                        alert("รหัสผ่านไม่ถูกต้อง!");
+                    }
+                }else{
+                    alert("ไม่มีเบอร์นี้อยู่ในฐานข้อมูล!");
+                }
+            });
+        }
+    
         //Events button
-            btnaccept.addEventListener('click',ChkLocker);
+        loginbtn.addEventListener("click", chkLogin);
       </script>
 </body>
 </html>

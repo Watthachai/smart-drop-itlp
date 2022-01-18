@@ -6,6 +6,7 @@ const labels = document.getElementsByTagName('label');
 const backButton = document.getElementById('back');
 const editButton = document.getElementById('edit');
 const deleteButton = document.getElementById('delete');
+const displayphoneNumberField = document.getElementById('displayphoneNumber');
 
 const auth = firebase.auth();
 
@@ -19,6 +20,8 @@ const editInformation = () => {
         newDisplayName: displayNameField.value,
         newPhotoURL: photoField.value
     };
+
+    const newphoneNumber = displayphoneNumberField.value;
     const newEmail = mailField.value;
     const newPassword = passwordField.value;
     // Holds all the information about the current signed in user
@@ -40,6 +43,11 @@ const editInformation = () => {
     else if(newEmail) {
         const credential = createCredential(user);
         changeEmail(user, credential, newEmail);
+    }
+    // Changes only phonenumber
+    else if(newphoneNumber) {
+        const credential = createCredential(user);
+        changePhoneNumber(user, credential, newphoneNumber);
     }
     
 }
@@ -92,6 +100,17 @@ const createCredential = user => {
         password
     );
     return credential;
+}
+
+const changePhoneNumber = (user, credential, newphoneNumber) => {
+    user.reauthenticateWithCredential(credential)
+    .then(() => {
+        user.updatephoneNumber(newphoneNumber);
+        console.log('Phone Updated!')
+    })
+    .catch(error => {
+        console.error(error);
+    })
 }
 
 const changePassword = (user, credential, newPassword) => {
@@ -159,7 +178,9 @@ passwordField.addEventListener('blur', () => {
 displayNameField.addEventListener('focus', () => {
     labels.item(2).className = "focused-field";
 });
-
+displayphoneNumberField.addEventListener('focus', () =>{
+    labels.item,(4)
+})
 photoField.addEventListener('focus', () => {
     labels.item(3).className = "focused-field";
 });

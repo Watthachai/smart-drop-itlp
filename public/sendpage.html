@@ -77,72 +77,100 @@
         var number_sw = 1;
 
         function ChkLocker(){
-            const lockerRef = ref(db);
-            get(child(lockerRef,"lockers/box1")).then((box1)=>{
-                if(box1.exists()){
-                    if(box1.val().status_item== 0){
-                        update(ref(db,"lockers/box1"),{
-                            owner_p: phone.value,
-                            status_sw: number_sw
-                        })
-                        .then(()=>{
-                            window.location.assign('waitbox1.html');
-                        })
-                        .catch((error)=>{
-                            alert(error);
-                        });
-                    }else{
-                        get(child(lockerRef,"lockers/box2")).then((box2)=>{
-                            if(box2.exists()){
-                                if(box2.val().status_item==0){
-                                    update(ref(db,"lockers/box2"),{
-                                    owner_p: phone.value,
-                                    status_sw: number_sw
-                                })
-                                .then(()=>{
-                                    window.location.assign('waitbox2.html');
-                                })
-                                .catch((error)=>{
-                                    alert(error);
-                                });
-                                }else{
-                                    get(child(lockerRef,"lockers/box3")).then((box3)=>{
-                                        if(box3.exists()){
-                                            if(box3.val().status_item==0){
-                                                update(ref(db,"lockers/box3"),{
-                                                owner_p: phone.value,
-                                                status_sw: number_sw
-                                            })
-                                            .then(()=>{
-                                                window.location.assign('waitbox3.html');
-                                            })
-                                            .catch((error)=>{
-                                                alert(error);
-                                            });
-                                            }else{
-                                                alert("ตู้เต็ม!");
-                                            }
-                                        }
+                const lockerRef = ref(db);
+                get(child(lockerRef,"lockers/box1")).then((box1)=>{
+                    if(box1.exists()){
+                        if(box1.val().status_item== 0){
+                            update(ref(db,"lockers/box1"),{
+                                owner_p: phone.value,
+                                status_sw: number_sw
+                            })
+                            .then(()=>{
+                                localStorage.setItem("box","box1");
+                                localStorage.setItem("num","1");
+                                window.location.assign('loading.html');
+                            })
+                            .catch((error)=>{
+                                alert(error);
+                            });
+                        }else{
+                            get(child(lockerRef,"lockers/box2")).then((box2)=>{
+                                if(box2.exists()){
+                                    if(box2.val().status_item==0){
+                                        update(ref(db,"lockers/box2"),{
+                                        owner_p: phone.value,
+                                        status_sw: number_sw
+                                    })
+                                    .then(()=>{
+                                        localStorage.setItem("box","box2");
+                                        localStorage.setItem("num","2");
+                                        window.location.assign('loading.html');
                                     })
                                     .catch((error)=>{
-                                        alert("มีปัญหา"+error);
+                                        alert(error);
                                     });
+                                    }else{
+                                        get(child(lockerRef,"lockers/box3")).then((box3)=>{
+                                            if(box3.exists()){
+                                                if(box3.val().status_item==0){
+                                                    update(ref(db,"lockers/box3"),{
+                                                    owner_p: phone.value,
+                                                    status_sw: number_sw
+                                                })
+                                                .then(()=>{
+                                                    localStorage.setItem("box","box3");
+                                                    localStorage.setItem("num","3");
+                                                    window.location.assign('loading.html');
+                                                })
+                                                .catch((error)=>{
+                                                    alert(error);
+                                                });
+                                                }else{
+                                                    get(child(lockerRef,"lockers/box4")).then((box4)=>{
+                                                        if(box4.exists()){
+                                                            if(box4.val().status_item==0){
+                                                                update(ref(db,"lockers/box4"),{
+                                                                    owner_p: phone.value,
+                                                                    status_sw: number_sw
+                                                                })
+                                                                .then(()=>{
+                                                                    localStorage.setItem("box","box4");
+                                                                    localStorage.setItem("num","4");
+                                                                    window.location.assign('loading.html');
+                                                                })
+                                                                .catch((error)=>{
+                                                                    alert(error);
+                                                                });
+                                                            }else{
+                                                                alert("ตู้เต็ม");
+                                                            }
+                                                        }
+                                                    })
+                                                    .catch((error)=>{
+                                                        alert(error);
+                                                    });
+                                                }
+                                            }
+                                        })
+                                        .catch((error)=>{
+                                            alert("มีปัญหา"+error);
+                                        });
+                                    }
                                 }
-                            }
-                        })
-                        .catch((error)=>{
-                            alert("มีปัญหา"+error);
-                        });
+                            })
+                            .catch((error)=>{
+                                alert("มีปัญหา"+error);
+                            });
+                        }
                     }
-                }
-            })
-            .catch((error)=>{
-                alert("มีปัญหา"+error);
-            });
+                })
+                .catch((error)=>{
+                    alert("มีปัญหา"+error);
+                });
         }
 
         //Events button
-        btnaccept.addEventListener('click',ChkLocker);
+            btnaccept.addEventListener('click',ChkLocker);
       </script>
       <script src="js/bootstrap.js"></script>
 </body>
