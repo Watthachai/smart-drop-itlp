@@ -1,0 +1,11 @@
+{
+    "name": "smart-drop-itlp",
+    "lockfileVersion": 2,
+    "requires": true,
+    "packages": {
+      "": {
+        "name": "smart-drop-itlp"
+      }
+    }
+  }
+  
