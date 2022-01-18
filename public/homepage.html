@@ -1,84 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Home</title>
-      <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-      <link rel="stylesheet" href="./style/home.css">
-  </head>
-  <body>
-    <main>
-      <div class="wrapper">
-        <section class="container mail-container">
-            <fieldset>
-              <div>
-                  <img src="./img/mail.svg" alt="signin with mail & password">
-              </div>
-            <div>
-              <label for="mail">Email</label> <br>
-              <input type="email" id="mail" name="mail"/>
-            </div>
-            <div>
-              <label for="password">Password</label> <br>
-              <input type="password" id="password" name="password"/>
-            </div>
-            <a href="./reset">I forgot my password</a>
-            <div class="clearfix"></div>
-            <button id="signInWithMail">Login</button>
-            <button id="signUp">Signup</button>
-          </fieldset>    
-      </section>
-      <section class="socialMedia-container"> 
-        <button id="signInWithGoogle">Login with your Google
-          <img src="./img/google.svg" width="55px" height="55px" alt="Sign in with your Google account.">
-        </button><br>
-        <button id="signInWithTwitter">Login with your Twitter
-          <img src="./img/twitter.svg" width="55px" height="55px" alt="Sign in with your Twitter account.">
-        </button><br>
-        <button id="signInWithFacebook">Login with your Facebook
-          <img src="./img/facebook.svg" width="55px" height="55px" alt="Sign in with your Facebook account.">
-        </button>
-      </section>
-      <section class="container phone-container">
-        <fieldset>
-          <div>
-                <img src="./img/phone.svg" alt="signin with your phone number">
-            </div>
-          <div>
-            <label for="phoneNumber">Phone Number</label> <br>
-            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]"/> <br>
-          </div>
-          <div>
-            <label for="code">Code</label> <br>
-            <input type="text" id="code" name="code"/> <br>
-          </div>
-          <div id="recaptcha-container"></div>
-          <button id="signInWithPhone">Login</button>
-          <button id="getCode">Get Code</button>  
-        </fieldset>
-      </section>
-      </div>
-      <nav>
-        <input type="radio" id="method1" name="method" value="method1" checked>Sign in with your email &#38; password <br>
-        <input type="radio" id="method2" name="method" value="method2">Sign in with your social media account <br>
-        <input type="radio" id="method3" name="method" value="method3">Sign in with your phone number
-      </nav>
-      <div class="feedbackContainer success">
-        <div class="feedbackIcon"></div>
-        <p class="feedbackMessage">Signed up Successfully</p>
-      </div>
-      <div class="feedbackContainer failure">
-        <div class="feedbackIcon"></div>
-        <p class="feedbackMessage">Signing up failed</p>
-      </div>
-    </main>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/6.2.4/firebase-app.js"></script>
-    <script src="/__/firebase/6.2.4/firebase-auth.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+    #recaptcha-container, #recaptcha-container div {
+      margin: 10px 0px 0px 0px
+  }
+  
+  #recaptcha-container {
+      float: right
+  }
+  .feedbackContainer {
+    height: 300px;
+    width: 300px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    display: none 
+}
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
+.feedbackIcon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+}
+
+.failure .feedbackIcon {
+    background-image: url('../img/failure.svg');
+}
+.phone-container img {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  display: block
+}
+button:hover {
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer
+}
+
+button {
+  margin-right: 5px
+}
+
+.clearfix {
+  clear: both
+}
+button {
+  background-color: white;
+  color: #2196f3
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+  <fieldset>
+    <div>
+          <img src="./img/phone.svg" width="20px" alt="signin with your phone number">
+      </div>
+    <div>
+      <label for="phoneNumber">Phone Number</label> <br>
+      <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]"/> <br>
+    </div>
+    <div>
+      <label for="code">Code</label> <br>
+      <input type="text" id="code" name="code"/> <br>
+    </div>
+    <div id="recaptcha-container"></div>
+    <button id="signInWithPhone">Login</button>
+    <button id="getCode">Get Code</button>
+    
+    <div class="feedbackContainer success">
+      <div class="feedbackIcon"></div>
+      <p class="feedbackMessage">Signed up Successfully</p>
+    </div>
+    <div class="feedbackContainer failure">
+      <div class="feedbackIcon"></div>
+      <p class="feedbackMessage">Signing up failed</p>
+    </div>
+  </fieldset>
+  </div>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="/__/firebase/6.2.4/firebase-app.js"></script>
+      <script src="/__/firebase/6.2.4/firebase-auth.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#reserved-urls -->
         <script type="module">
           // Import the functions you need from the SDKs you need
@@ -106,7 +126,55 @@
         </script>  
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
-    <script src="./js/home.js"></script>
-  </body>
-</html>
+        
+    <script>
+      const phoneContainer = document.querySelector('.phone-container');
+      const authenticationMethod3 = document.getElementById('method3');
+      const phoneNumberField = document.getElementById('phoneNumber');
+      const codeField = document.getElementById('code');
+      const labels = document.getElementsByTagName('label');
+      const signInWithPhoneButton = document.getElementById('signInWithPhone');
+      const getCodeButton = document.getElementById('getCode');
+      const failureModal = document.querySelector('.failure');
+      
+      const auth = firebase.auth();
 
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+
+      recaptchaVerifier.render().then(widgetId => {
+        window.recaptchaWidgetId = widgetId;
+      })
+
+      const sendVerificationCode = () => {
+        const phoneNumber = phoneNumberField.value;
+        const appVerifier = window.recaptchaVerifier;
+
+        auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then(confirmationResult => {
+          const sentCodeId = confirmationResult.verificationId;
+          signInWithPhoneButton.addEventListener('click', () => signInWithPhone(sentCodeId));
+        })
+      }
+
+      const signInWithPhone = sentCodeId => {
+        const code = codeField.value;
+        const credential = firebase.auth.PhoneAuthProvider.credential(sentCodeId, code);
+        auth.signInWithCredential(credential)
+        .then(() => {
+          localStorage.setItem("phone",phoneNumberField.value);
+          window.location.assign('profile.html');
+        })
+        .catch(error => {
+          console.error(error);
+        })
+      }
+      getCodeButton.addEventListener('click', sendVerificationCode);
+      
+      auth.onAuthStateChanged(user => {
+        if(user)
+          window.location.assign('profile.html');
+      })
+
+    </script>
+</body>
+</html>
