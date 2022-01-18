@@ -24,10 +24,9 @@
     <div>
       <p>ตู้ที่มีของ</p>
       <h1 id="textempty">ไม่มีของสักอย่าง</h1>
-      <button id="box1">เปิดตู้ที่ 1 </button>
-      <button id="box2">เปิดตู้ที่ 2 </button>
       <button id="box3">เปิดตู้ที่ 3 </button>
-      <button id="box4">เปิดตู้ที่ 4 </button>
+      <button id="box2">เปิดตู้ที่ 2 </button>
+      <button id="box1">เปิดตู้ที่ 1 </button>
     </div>
   </section>
    <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -67,7 +66,6 @@
         var box1btn = document.getElementById("box1");
         var box2btn = document.getElementById("box2");
         var box3btn = document.getElementById("box3");
-        var box4btn = document.getElementById("box4");
         var textempty = document.getElementById("textempty");
         //document.getElementById("phone").innerHTML = phonereplace;
         const refdb = ref(db); 
@@ -84,7 +82,7 @@
         })
         .catch((error)=>{
           alert(error);
-        })
+        });
 
         // btn box2
         get(child(refdb,"lockers/box2")).then((box2)=>{
@@ -98,7 +96,7 @@
         })
         .catch((error)=>{
           alert(error);
-        })
+        });
 
         //btn box3
         get(child(refdb,"lockers/box3")).then((box3)=>{
@@ -112,26 +110,98 @@
         })
         .catch((error)=>{
           alert(error);
-        })
+        });
 
-        //btn box4
-        get(child(refdb,"lockers/box4")).then((box4)=>{
-          if(box4.exists()){
-            if(box4.val().owner_p != phonereplace || box4.val().status_item == 0){
-              box4btn.remove();
-              numemp = numemp + 1;
-            }else{
-            }
-          }
-        })
-        .catch((error)=>{
-          alert(error);
-        })
-        if(numemp != 4){
+        if(numemp != 3){
           textempty.remove();
         }
-  
         //const phoneNumber = document.getElementById("displayphoneNumber");
+
+        //function
+        var number_active = 1;
+          //box1
+          function OpenBox1(){
+            const openref = ref(db);
+            get(child(openref,"lockers/box1")).then((op1)=>{
+              if(op1.exists()){
+                if(op1.val().status_active==0){
+                  update(ref(db,"lockers/box1"),{
+                    status_active: number_active
+                  })
+                  .then(()=>{
+                    localStorage.setItem("activebox","box1");
+                    localStorage.setItem("activenum","1");
+                    window.location.assign('userloading.html');
+                  })
+                  .catch((error)=>{
+                    alert(error);
+                  });
+                }else{
+                  alert("ตู้เปิดอยู่แล้ว!");
+                }
+              }
+            })
+            .catch((error)=>{
+              alert(error);
+            });
+          }
+          //box2
+          function OpenBox2(){
+            const openref = ref(db);
+            get(child(openref,"lockers/box2")).then((op2)=>{
+              if(op2.exists()){
+                if(op2.val().status_active==0){
+                  update(ref(db,"lockers/box2"),{
+                    status_active: number_active
+                  })
+                  .then(()=>{
+                    localStorage.setItem("activebox","box2");
+                    localStorage.setItem("activenum","2");
+                    window.location.assign('userloading.html');
+                  })
+                  .catch((error)=>{
+                    alert(error);
+                  });
+                }else{
+                  alert("ตู้เปิดอยู่แล้ว!");
+                }
+              }
+            })
+            .catch((error)=>{
+              alert(error);
+            });
+          }
+          //box3
+          function OpenBox3(){
+            const openref = ref(db);
+            get(child(openref,"lockers/box3")).then((op3)=>{
+              if(op3.exists()){
+                if(op3.val().status_active==0){
+                  update(ref(db,"lockers/box3"),{
+                    status_active: number_active
+                  })
+                  .then(()=>{
+                    localStorage.setItem("activebox","box3");
+                    localStorage.setItem("activenum","3");
+                    window.location.assign('userloading.html');
+                  })
+                  .catch((error)=>{
+                    alert(error);
+                  });
+                }else{
+                  alert("ตู้เปิดอยู่แล้ว!");
+                }
+              }
+            })
+            .catch((error)=>{
+              alert(error);
+            });
+          }
+
+        //Event
+        box1btn.addEventListener('click',OpenBox1);
+        box2btn.addEventListener('click',OpenBox2);
+        box3btn.addEventListener('click',OpenBox3);
       </script>
    <!-- Initialize Firebase -->
    <script src="/__/firebase/init.js"></script>
