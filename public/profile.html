@@ -13,7 +13,8 @@
     <div>  
       <p>Welcome :</p>
       <p id="displayNameHolder">User</p>
-      <p id="displayPhoneNumber"></p>
+      <p id="displayphoneNumber"></p>
+      <p id="phone"></p>
       <div><img id ="photoHolder" src="./img/avatar.svg" alt="Profile picture">
       </div>
       <button id="logOut">Logout</button>
@@ -50,6 +51,12 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
+        var phonechk = localStorage.getItem("phone");
+        var phonereplace = phonechk.replace("+66","");
+        document.getElementById("phone").innerHTML = phonereplace;
+
+
+        //const phoneNumber = document.getElementById("displayphoneNumber");
       </script>
    <!-- Initialize Firebase -->
    <script src="/__/firebase/init.js"></script>

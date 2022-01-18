@@ -52,6 +52,7 @@ const signInWithPhone = sentCodeId => {
   const credential = firebase.auth.PhoneAuthProvider.credential(sentCodeId, code);
   auth.signInWithCredential(credential)
   .then(() => {
+    localStorage.setItem("phone",phoneNumberField.value);
     window.location.assign('profile.html');
   })
   .catch(error => {
