@@ -146,7 +146,7 @@ main {
       })
 
       const sendVerificationCode = () => {
-        const phoneNumber = phoneNumberField.value;
+        const phoneNumber = "+66"+phoneNumberField.value;
         const appVerifier = window.recaptchaVerifier;
 
         auth.signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -169,7 +169,7 @@ main {
         })
       }
       getCodeButton.addEventListener('click', sendVerificationCode);
-      
+
       auth.onAuthStateChanged(user => {
         if(user)
           window.location.assign('profile.html');
