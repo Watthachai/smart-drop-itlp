@@ -21,6 +21,14 @@
       <button id="mergeAccounts">Merge Accounts</button>
       <button id="modifyAccount">Modify Account</button>
     </div>
+    <div>
+      <p>ตู้ที่มีของ</p>
+      <h1 id="textempty">ไม่มีของสักอย่าง</h1>
+      <button id="box1">เปิดตู้ที่ 1 </button>
+      <button id="box2">เปิดตู้ที่ 2 </button>
+      <button id="box3">เปิดตู้ที่ 3 </button>
+      <button id="box4">เปิดตู้ที่ 4 </button>
+    </div>
   </section>
    <!-- The core Firebase JS SDK is always required and must be listed first -->
    <script src="/__/firebase/6.2.4/firebase-app.js"></script>
@@ -51,11 +59,78 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
+        import {getDatabase, ref, set, get, child, update, remove} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
+        const db = getDatabase();
+
         var phonechk = localStorage.getItem("phone");
         var phonereplace = phonechk.replace("+66","");
-        document.getElementById("phone").innerHTML = phonereplace;
+        var box1btn = document.getElementById("box1");
+        var box2btn = document.getElementById("box2");
+        var box3btn = document.getElementById("box3");
+        var box4btn = document.getElementById("box4");
+        var textempty = document.getElementById("textempty");
+        //document.getElementById("phone").innerHTML = phonereplace;
+        const refdb = ref(db); 
+        let numemp = 0;
+        // btn box1
+        get(child(refdb,"lockers/box1")).then((box1)=>{
+          if(box1.exists()){
+            if(box1.val().owner_p != phonereplace || box1.val().status_item == 0){
+              box1btn.remove();
+              numemp = numemp + 1;
+            }else{
+            }
+          }
+        })
+        .catch((error)=>{
+          alert(error);
+        })
 
+        // btn box2
+        get(child(refdb,"lockers/box2")).then((box2)=>{
+          if(box2.exists()){
+            if(box2.val().owner_p != phonereplace || box2.val().status_item == 0){
+              box2btn.remove();
+              numemp = numemp + 1;
+            }else{
+            }
+          }
+        })
+        .catch((error)=>{
+          alert(error);
+        })
 
+        //btn box3
+        get(child(refdb,"lockers/box3")).then((box3)=>{
+          if(box3.exists()){
+            if(box3.val().owner_p != phonereplace || box3.val().status_item == 0){
+              box3btn.remove();
+              numemp = numemp + 1;
+            }else{
+            }
+          }
+        })
+        .catch((error)=>{
+          alert(error);
+        })
+
+        //btn box4
+        get(child(refdb,"lockers/box4")).then((box4)=>{
+          if(box4.exists()){
+            if(box4.val().owner_p != phonereplace || box4.val().status_item == 0){
+              box4btn.remove();
+              numemp = numemp + 1;
+            }else{
+            }
+          }
+        })
+        .catch((error)=>{
+          alert(error);
+        })
+        if(numemp != 4){
+          textempty.remove();
+        }
+  
         //const phoneNumber = document.getElementById("displayphoneNumber");
       </script>
    <!-- Initialize Firebase -->
