@@ -126,29 +126,7 @@
                                                     alert(error);
                                                 });
                                                 }else{
-                                                    get(child(lockerRef,"lockers/box4")).then((box4)=>{
-                                                        if(box4.exists()){
-                                                            if(box4.val().status_item==0){
-                                                                update(ref(db,"lockers/box4"),{
-                                                                    owner_p: phone.value,
-                                                                    status_sw: number_sw
-                                                                })
-                                                                .then(()=>{
-                                                                    localStorage.setItem("box","box4");
-                                                                    localStorage.setItem("num","4");
-                                                                    window.location.assign('loading.html');
-                                                                })
-                                                                .catch((error)=>{
-                                                                    alert(error);
-                                                                });
-                                                            }else{
-                                                                alert("ตู้เต็ม");
-                                                            }
-                                                        }
-                                                    })
-                                                    .catch((error)=>{
-                                                        alert(error);
-                                                    });
+                                                    alert("ตู้เต็มแล้ว!");
                                                 }
                                             }
                                         })
