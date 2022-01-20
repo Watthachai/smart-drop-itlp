@@ -18,28 +18,31 @@ body {
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
   text-align: center;
+  background: #212534;
 }
 
 #container {
   position: relative;
   margin: auto;
   overflow: hidden;
-  width: 700px;
-  height: 250px;
+  width: 1150px;
+  height: 400px;
+  justify-content: center;
 }
 
 h1 {
-  font-size: 0.9em;
+  font-size: 1.2em;
   font-weight: 100;
-  letter-spacing: 3px;
   padding-top: 5px;
-  color: #fcfcfc;
+  color: #5e5e5e;
   padding-bottom: 5px;
   text-transform: uppercase;
 }
 
 .green {
   color: #4ec07d;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .red {
@@ -48,7 +51,7 @@ h1 {
 
 .alert {
   font-weight: 700;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 
 p {
@@ -59,8 +62,7 @@ p {
   letter-spacing: 1px;
 }
 
-button,
-.dot {
+button, .dot {
   cursor: pointer;
 }
 
@@ -68,8 +70,9 @@ button,
   position: absolute;
   width: 35%;
   height: 100%;
-  left: 12%;
-  background: linear-gradient(to bottom right, #b0db7d 40%, #99dbb4 100%);
+  left: 25%;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #B0DB7D 40%, #99DBB4 100%);
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(203, 205, 211, 0.1);
   perspective: 40px;
@@ -80,7 +83,7 @@ button,
   width: 35%;
   height: 100%;
   right: 12%;
-  background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(203, 205, 211, 0.1);
 }
@@ -88,7 +91,7 @@ button,
 .dot {
   width: 8px;
   height: 8px;
-  background: #fcfcfc;
+  background: #FCFCFC;
   border-radius: 50%;
   position: absolute;
   top: 4%;
@@ -107,7 +110,7 @@ button,
   position: absolute;
   width: 22%;
   height: 22%;
-  background: #fcfcfc;
+  background: #FCFCFC;
   border-radius: 50%;
   border: 1px solid #777777;
   top: 21%;
@@ -120,7 +123,7 @@ button,
   position: absolute;
   width: 22%;
   height: 22%;
-  background: #fcfcfc;
+  background: #FCFCFC;
   border-radius: 50%;
   border: 1px solid #777777;
   top: 21%;
@@ -195,7 +198,7 @@ button,
 
 .button-box {
   position: absolute;
-  background: #fcfcfc;
+  background: #FCFCFC;
   width: 50%;
   height: 15%;
   border-radius: 20px;
@@ -258,15 +261,15 @@ footer {
   font-family: "Lato", sans-serif;
 }
 footer p {
-  color: #ef8d9c;
+  color: #EF8D9C;
   letter-spacing: 2px;
 }
 footer a {
-  color: #b0db7d;
+  color: #B0DB7D;
   text-decoration: none;
 }
 footer a:hover {
-  color: #ffc39e;
+  color: #FFC39E;
 }
     </style>
 </head>
@@ -281,9 +284,15 @@ footer a:hover {
             <div class="mouth happy"></div>
           </div>
           <div class="shadow scale"></div>
-          <div class="message"><h1 class="alert">Success!</h1><p>yay, everything is working.</p></div>
-          <button class="button-box"><h1 class="green">continue</h1></button>
+          <div class="message"><h1 class="alert">รับพัสดุเสร็จสิ้น!</h1><h1>กรุณาปิดตู้ให้สนิทก่อนสิ้นสุดการใช้งาน</h1></div>
+          <a href="profile.html"><button class="button-box"><h1 class="green">ยืนยัน</h1></button></a>
         </div>
+
       </div>
+      <script>
+        setTimeout(function(){
+           window.location.href = 'profile.html';
+        }, 5000);
+     </script>
 </body>
 </html>
