@@ -7,67 +7,865 @@
   <title>Document</title>
   
   <style>
-    #recaptcha-container, #recaptcha-container div {
-      margin: 10px 0px 0px 0px
-  }
-  
-  #recaptcha-container {
-      float: right
-  }
-  .feedbackContainer {
-    height: 300px;
-    width: 300px;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    display: none 
+/* https://dribbble.com/shots/15635034-Saifty-GDPR-Settings */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.feedbackIcon {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 20px;
+:root {
+  --purple-100: #ede9fe;
+  --purple-200: #c4b5fd;
+  --purple-600: #7c3aed;
+  --purple-800: #5b21b6;
+  --pink-100: #fee2e2;
+  --pink-200: #fecaca;
+  --grey-100: #f3f4f6;
+  --grey-200: #e5e7eb;
+  --grey-300: #d1d5db;
+  --grey-400: #9ca3af;
+  --grey-500: #6b7280;
+  --grey-700: #374151;
+  --white: #fff;
 }
 
-.failure .feedbackIcon {
-    background-image: url('../img/failure.svg');
-}
-.phone-container img {
-  width: 100px;
-  height: 100px;
-  margin: auto;
-  display: block
-}
-button:hover {
-  background-color: #2196f3;
-  color: white;
-  cursor: pointer
+body {
+  margin: 0;
+  padding: 30px;
+  display: flex;
+  height: 100vh;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--grey-100);
+  font-family: "Poppins", sans-serif;
+  color: var(--grey-700);
 }
 
-button {
-  margin-right: 5px
-}
-
-.clearfix {
-  clear: both
-}
-button {
-  background-color: white;
-  color: #2196f3
-}
-
-main {
+.container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center
+  width: 450px;
+  height: 660px;
+  border-radius: 24px;
+  padding: 24px;
+  background-color: var(--white);
+  overflow: hidden;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.header-image {
+  height: 80px;
+  width: 80px;
+  margin: 20px 40px 60px 40px;
+}
+
+.header-image svg {
+  position: relative;
+  fill: var(--purple-600);
+}
+
+.header-image-particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--pink-200);
+  opacity: 0.8;
+}
+
+.header-image-particle-1 {
+  height: 22px;
+  width: 22px;
+  -webkit-animation: particle-1 1.2s ease-in-out alternate infinite;
+          animation: particle-1 1.2s ease-in-out alternate infinite;
+}
+
+@-webkit-keyframes particle-1 {
+  0% {
+    transform: translate3d(80px, 65px, 0);
+  }
+  100% {
+    transform: translate3d(88px, 73px, 0);
+  }
+}
+
+@keyframes particle-1 {
+  0% {
+    transform: translate3d(80px, 65px, 0);
+  }
+  100% {
+    transform: translate3d(88px, 73px, 0);
+  }
+}
+.header-image-particle-2 {
+  height: 18px;
+  width: 18px;
+  -webkit-animation: particle-2 1.4s ease-in-out alternate infinite;
+          animation: particle-2 1.4s ease-in-out alternate infinite;
+}
+
+@-webkit-keyframes particle-2 {
+  0% {
+    transform: translate3d(-50px, 40px, 0);
+  }
+  100% {
+    transform: translate3d(-30px, 40px, 0);
+  }
+}
+
+@keyframes particle-2 {
+  0% {
+    transform: translate3d(-50px, 40px, 0);
+  }
+  100% {
+    transform: translate3d(-30px, 40px, 0);
+  }
+}
+.header-image-particle-3 {
+  height: 12px;
+  width: 12px;
+  -webkit-animation: particle-3 1.8s ease-in-out alternate infinite;
+          animation: particle-3 1.8s ease-in-out alternate infinite;
+}
+
+@-webkit-keyframes particle-3 {
+  0% {
+    transform: translate3d(90px, 10px, 0);
+  }
+  100% {
+    transform: translate3d(105px, -5px, 0);
+  }
+}
+
+@keyframes particle-3 {
+  0% {
+    transform: translate3d(90px, 10px, 0);
+  }
+  100% {
+    transform: translate3d(105px, -5px, 0);
+  }
+}
+.button {
+  width: 100%;
+  padding: 16px 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--white);
+  background-color: var(--purple-600);
+  -webkit-appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 200ms, color 200ms;
+}
+
+.button:active {
+  background-color: var(--purple-800);
+}
+
+.link {
+  color: var(--purple-600);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.text:not(.link) {
+  color: var(--grey-500);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.modal,
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.modal-active.modal {
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  opacity: 0;
+  background-color: rgba(8, 2, 29, 0.5);
+  transform: translateZ(0);
+  transition: opacity 200ms;
+}
+
+.modal-active .modal-backdrop {
+  opacity: 1;
+}
+
+.modal-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+  width: 100%;
+  padding: 24px;
+  background: var(--white);
+  transform: translateY(100%);
+  transition: transform 220ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.modal-body::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  height: 4px;
+  margin: 0 auto;
+  width: 60px;
+  border-radius: 2px;
+  background-color: var(--grey-200);
+}
+
+.modal-active .modal-body {
+  transform: translateY(0);
+}
+
+.modal-title {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.settings-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.settings-button {
+  min-width: 72px;
+  padding: 10px 16px;
+  margin: 16px 0;
+  border-radius: 16px;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--grey-500);
+  background-color: var(--grey-100);
+  -webkit-appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 200ms, color 200ms;
+}
+
+.settings-button-active {
+  background-color: var(--pink-100);
+  color: var(--purple-600);
+}
+
+.settings-button-icon {
+  font-size: 40px;
+  text-align: center;
+  color: var(--grey-300);
+  transform: translate3d(0, 0, 0);
+  transition: color 200ms;
+}
+
+.settings-button-icon-active {
+  color: var(--purple-600);
+  transform-origin: center center;
+  -webkit-animation: bounce 500ms ease-in-out;
+          animation: bounce 500ms ease-in-out;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
+  10% {
+    transform: scale3d(1, 0.8, 1) translate3d(0, 0, 0);
+  }
+  40% {
+    transform: scale3d(1, 1, 1) translate3d(0, -12px, 0);
+  }
+  70% {
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
+  10% {
+    transform: scale3d(1, 0.8, 1) translate3d(0, 0, 0);
+  }
+  40% {
+    transform: scale3d(1, 1, 1) translate3d(0, -12px, 0);
+  }
+  70% {
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
+}
+.input {
+  position: relative;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.input label {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-weight: 500;
+  color: var(--grey-400);
+  pointer-events: none;
+  transform-origin: top left;
+  transition: transform 200ms;
+}
+
+.input input {
+  padding: 24px 200px 14px 20px;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  background: var(--grey-100);
+  transition: background-color 160ms;
+}
+
+.input input:focus {
+  background: var(--grey-200);
+}
+
+.input-active label {
+  transform: scale(0.7, 0.7) translate(0, -10px);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.footer .text {
+  margin: 0;
+}
+
+/* [ YEK/SASS - VERSION : 3.1.0 ] */
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/yekan-font@1.0.0/css/yekan-font.min.css");
+.visible-hidden {
+  visibility: hidden;
+}
+
+/* CREDIT : YEK/SASS (https://github.com/yek-org/yek-sass) */
+/* __[ FONT'S ]__ */
+/* __[ VARIABLE ]__ */
+/* __[ :ROOT ]__ */
+:root {
+  --color-primary: #1a2556;
+  --color-secondary: #a5b3d4;
+  --color-gray: #dde6f3;
+  --color-light-gray: #f3f6fb;
+  --color-white: white;
+  --color-black: #3e3743;
+  --color-input-hover: rgba(165, 179, 212, 0.6);
+  --color-input-focus: rgba(26, 37, 86, 0.45);
+  --color-input-error: rgba(255, 94, 31, 0.6);
+  --color-input-warning: rgba(166, 145, 54, 0.6);
+  --color-input-success: rgba(23, 125, 23, 0.45);
+  --color-input-disabled: #dde6f3;
+  --font-family: Roboto, Montserrat, sans-serif;
+  --font-persian: Yekan, Lalezar, cursive;
+  --font-proxima: proxima-soft, Proxima Soft, Proxima Nova Soft, Helvetica, Arial, sans-serif;
+}
+
+/* __[ STYLE ]__ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: 0.2s ease all;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: var(--font-family);
+}
+
+:root {
+  --font-family: Montserrat, Roboto, sans-serif !important;
+}
+
+body,
+.verification {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.verification {
+  /*
+  HINT : `--m-` = main
+  HINT : `--w-` = wrap
+  */
+  --m-width: 450px;
+  --m-height: 350px;
+  --w-width: 400px;
+  --w-height: 325px;
+  height: var(--m-height);
+  width: var(--m-width);
+}
+.verification, .verification__wrap, .verification__fields, .verification__field, .verification__verify {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.verification__wrap, .verification__fields, .verification__field, .verification__header, .verification__verify, .verification__timeout {
+  padding: 0;
+  margin: 0;
+  width: var(--w-width);
+}
+.verification__wrap {
+  justify-content: space-between;
+  flex-direction: column;
+  height: var(--w-height);
+}
+.verification__title {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 12px;
+}
+.verification__description {
+  text-align: justify;
+  line-height: 1.6rem;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.verification__header {
+  height: 35%;
+}
+.verification__fields {
+  height: 25%;
+}
+.verification__verify {
+  height: 25%;
+}
+.verification__verify p {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.verification__verify p, .verification__verify_btn {
+  width: 100%;
+  height: 100%;
+}
+.verification__verify_btn {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+  cursor: pointer;
+  border-radius: 9px;
+  height: 52px;
+  padding: 8px 16px;
+  font-size: 1.25rem;
+}
+.verification__verify_btn:hover {
+  transform: scale(1.05);
+}
+.verification__verify_btn:active {
+  transform: scale(0.95);
+}
+.verification__field {
+  justify-content: space-between;
+  letter-spacing: 1.7px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+  width: 100%;
+  height: 100%;
+  height: 60px;
+}
+.verification__field:hover, .verification__field:focus {
+  box-shadow: none;
+}
+.verification__input {
+  letter-spacing: 1.7px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+  width: 150px;
+  height: 50px;
+  transition: 0.2s 0s ease-out;
+  width: 60px;
+  height: 60px;
+  border-radius: 9px;
+  padding: 16px 0;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 2rem;
+  font-weight: bold;
+}
+.verification__input:hover {
+  box-shadow: 0 0 0 0.25rem var(--color-input-hover);
+}
+.verification__input:focus {
+  box-shadow: 0 0 0 0.25rem var(--color-input-focus);
+}
+.verification__timeout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  height: 25px;
+}
+.verification__timeout p {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  text-align: justify;
+  padding: 4px 2px;
+  padding-left: 4px;
+}
+.verification__timeout strong {
+  display: inline-block;
+  width: 55px;
+  text-align: center;
+}
+.verification__timeout, .verification__header, .verification__fields {
+  margin-right: 9px;
+  margin-left: 9px;
+}
+.verification__send_new {
+  border: none;
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+  cursor: pointer;
+  width: auto;
+  height: 25px;
+  border-radius: 15px;
+  top: 50%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 5px 2px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  transition: top 0.5s 0.1s ease, height 0.5s 0.1s ease, transform 0.3s ease, background 0.3s ease;
+}
+.verification--timed-out {
+  position: relative;
+}
+.verification--timed-out .verification__send_new {
+  border: none;
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: bold;
+}
+.verification--timed-out .verification__send_new:hover {
+  transform: scale(1.05);
+}
+.verification--timed-out .verification__send_new:active {
+  transform: scale(0.95);
+}
+
+/* --- RESPONSIVE --- */
+/* [media MOBILE] */
+@media (max-width: 375px) {
+  .verification {
+    --m-width: 350px;
+    --m-height: 325px;
+    --w-width: 300px;
+    --w-height: 325px;
+    margin-top: -75px;
+  }
+  .verification__input {
+    width: 55px;
+    height: 55px;
+    padding: 8px 0;
+    font-size: 1.5rem;
+  }
+}
+/* --- THEME --- */
+/* [DEFAUTL] */
+.verification {
+  background-color: #fff;
+  color: var(--color-secondary);
+}
+.verification__title {
+  color: var(--color-primary);
+}
+.verification__description {
+  color: var(--color-secondary);
+}
+.verification__timeout {
+  color: var(--color-secondary);
+}
+.verification__verify_btn {
+  background: var(--color-primary);
+  color: var(--color-light-gray);
+}
+.verification__input {
+  background: var(--color-gray);
+}
+.verification__input:hover {
+  box-shadow: 0 0 0 0.25rem var(--color-input-hover);
+}
+.verification__input:focus {
+  box-shadow: 0 0 0 0.25rem var(--color-input-focus);
+}
+
+[data-theme] {
+  background-color: var(--color-light-gray);
+  color: var(--color-black);
+}
+
+/* [theme DARK] */
+[data-theme=dark] {
+  --color-primary: #abbcf2;
+  --color-secondary: #6f7a9d;
+  --color-gray: #8d9bc7;
+  --color-light-gray: #333848;
+  --color-input-hover: #abbcf2;
+  --color-input-focus: #abbcf2;
+}
+[data-theme=dark] ::-moz-selection {
+  color: var(--color-light-gray);
+  background: var(--color-primary);
+}
+[data-theme=dark] ::selection {
+  color: var(--color-light-gray);
+  background: var(--color-primary);
+}
+
+[data-theme=dark-2] {
+  /* ALT : secondary: #2bbdff */
+}
+[data-theme=dark-2] {
+  --color-primary: #ecb365;
+  --color-secondary: #5296b5;
+  --color-gray: #064663;
+  --color-light-gray: #04293a;
+  --color-input-hover: #06466399;
+  --color-input-focus: #06466373;
+}
+[data-theme=dark-2] .verification__description, [data-theme=dark-2] .verification__timeout {
+  color: var(--color-secondary);
+}
+[data-theme=dark-2] .verification__input {
+  color: var(--color-primary);
+}
+
+::-moz-selection {
+  color: var(--color-gray);
+  background: var(--color-primary);
+}
+
+::selection {
+  color: var(--color-gray);
+  background: var(--color-primary);
+}
+
+.theme {
+  border: none;
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+  cursor: pointer;
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+  width: 95px;
+  height: 35px;
+  border-radius: 50px;
+  padding: 9px;
+  color: #a5b3d400;
+  background: #a5b3d400;
+  opacity: 0.3;
+}
+.theme:hover {
+  background: var(--color-primary);
+  opacity: 1;
+}
   </style>
 </head>
 <body>
+
+  <div class="container">
+    <div class="header">
+        <div class="header-image">
+            <div class="header-image-particle header-image-particle-1"></div>
+            <div class="header-image-particle header-image-particle-2"></div>
+            <div class="header-image-particle header-image-particle-3"></div>
+            <svg viewBox="0 0 1000 1000">
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)">
+                    <path d="M2901.7,4280.3c-1274.3-463.7-2048.5-755-2075.3-779.9c-80.5-74.7-99.7-139.9-128.4-448.4c-172.5-1849.2-9.6-3437.8,482.9-4691.1c210.8-538.5,527-1086.5,858.5-1494.7c298.9-367.9,760.8-776.1,1159.4-1025.2c553.8-346.8,1337.6-617,1791.7-620.9c486.8-3.8,1339.5,302.8,1916.3,687.9c550,367.9,1046.3,881.5,1420,1469.8C9187.2-1263.6,9524.4,689.2,9302.1,3052c-28.8,308.5-47.9,373.7-128.4,448.4C9118.2,3554,5078.6,5020,4994.3,5020C4959.8,5018.1,4018.9,4686.6,2901.7,4280.3z M6878,3705.4l1810.9-657.3l23-274c61.3-737.8,51.7-1690.2-24.9-2343.6c-191.6-1684.4-812.5-2977.9-1807.1-3779c-492.5-394.7-1145.9-701.4-1711.3-801c-182.1-32.6-189.7-32.6-390.9,7.7c-1293.5,260.6-2380,1203.4-2964.5,2569.8c-276,649.6-442.7,1368.2-534.7,2309.1c-32.6,331.5-28.7,1646.1,5.8,2027.4l26.8,283.6l1839.6,668.8c1167,423.5,1853.1,665,1878,657.3C5049.9,4368.5,5881.5,4067.6,6878,3705.4z" />
+                    <path d="M4430.9,2691.7c-298.9-80.5-532.7-297-642-596c-36.4-103.5-42.2-159-49.8-663l-7.7-551.9h-86.2c-47.9,0-122.6-9.6-166.7-23c-105.4-30.7-264.5-189.7-295.1-295.1c-32.6-113.1-32.6-2010.2,0-2123.3c30.7-105.4,189.7-264.5,295.1-295.1c113.1-32.6,2930-32.6,3043.1,0C6627-1825,6786-1666,6816.7-1560.6c32.6,113.1,32.6,2010.2,0,2123.3C6786,668.1,6627,827.1,6521.6,857.8c-44.1,13.4-118.8,23-166.7,23h-86.2l-7.7,551.9c-7.7,504-13.4,559.6-49.8,663c-111.1,302.8-344.9,517.4-649.6,596C5410.1,2731.9,4576.5,2730,4430.9,2691.7z M5513.6,2053.6c122.7-88.2,128.4-113.1,134.1-668.8l5.7-504H5002h-653.5V1356c1.9,576.8,17.2,640.1,178.2,720.5c51.7,26.8,128.4,30.7,492.5,26.8C5437,2097.6,5452.3,2095.7,5513.6,2053.6z M5210.8,202.4c199.3-132.2,228-415.8,55.6-588.3l-74.7-74.7v-371.8c0-444.6,3.8-433.1-191.6-433.1c-195.5,0-191.6-11.5-191.6,433.1v371.8l-74.7,74.7c-153.3,153.3-155.2,385.2-1.9,538.5c42.2,42.2,103.5,84.3,138,93.9C4971.3,277.2,5128.4,258,5210.8,202.4z" />
+                </g>
+            </svg>
+        </div>
+
+        <h1 class="header-title text-center">
+            ยินดีต้อนรับ! บริการตู้รับฝากของ Smart Drop
+        </h1>
+
+        <p class="text text-center">
+            โปรดกรอกเบอร์มือถือของคุณด้านล่างนี้
+        </p>
+    </div>
+
+    <form autocomplete="off">
+        <div class="input app-input">
+          <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]"/>
+            <label for="email">Phone</label>
+        </div>
+        <div id="recaptcha-container"></div>
+        <button type="button" class="button app-login-button" id="getCode">Get Code</button>
+    </form>
+
+    <div class="modal app-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-body app-modal-body">
+            <h3 class="modal-title text-center">
+                
+            </h3>
+
+            <p class="text text-center">
+              โปรดยืนยันว่าคุณยอมรับการรับเนื้อหาด้วยวิธีต่อไปนี้:
+            </p>
+
+            <button type="button" class="theme"></button>
+<form class="verification">
+  <section class="verification__wrap">
+    <header class="verification__header">
+      <h2 class="verification__title">Verification Code</h2>
+      <p class="verification__description">
+        เราได้ส่งรหัสยืนยันจำนวน 6 หลักไปยังมือถือของคุณแล้ว
+      </p>
+    </header>
+
+    <section class="verification__fields">
+      <fieldset class="verification__field">
+          <div class="input app-input">
+            <input type="text" id="code" name="code"><br><br><br>
+              <label for="email">รหัสยืนยัน</label>
+          </div>
+      </fieldset>
+    </section>
+    <div id="recaptcha-container"></div>
+    <section class="verification__verify">
+      <p>
+        <button type="button" id="signInWithPhone"  class="verification__verify_btn" >Login</button>
+      </p>
+    </section>
+
+    <section class="verification__timeout">
+    </section>
+
+  </section>
+</form>
+
+<!-- follow                        -->
+<!-- instagram      : @mikoloism   -->
+<!-- github/codepen : @miko-github -->
+
+            <button type="button" class="button app-save-button">
+                ปิดเมนู
+                
+            </button>
+
+        </div>
+    </div>
+</div>
+
   <div class="wrapper">
   <fieldset>
     <div>
@@ -95,6 +893,213 @@ main {
     </div>
   </fieldset>
   </div>
+
+    <script>
+      const modal = document.querySelector(".app-modal");
+
+modal.addEventListener("click", (event) => {
+    const modalBody = document.querySelector(".app-modal-body");
+    const isBackdropElemClick = !modalBody.contains(event.target);
+
+    if (isBackdropElemClick) {
+        toggleClass(modal, "modal-active");
+    }
+});
+
+const loginButton = document.querySelector(".app-login-button");
+const saveButton = document.querySelector(".app-save-button");
+const modalButtons = [saveButton, loginButton];
+
+modalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        toggleClass(modal, "modal-active");
+    });
+});
+
+const settingsButtons = document.querySelectorAll(".app-settings-button");
+
+settingsButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const icon = button.parentNode.querySelector(
+            ".app-settings-button-icon"
+        );
+
+        toggleClass(button, "settings-button-active");
+        toggleClass(icon, "settings-button-icon-active");
+    });
+});
+
+const inputContainers = document.querySelectorAll(".app-input");
+
+inputContainers.forEach((container) => {
+    const input = container.querySelector("input");
+    const events = ["focus", "blur"];
+
+    events.forEach((event) => {
+        input.addEventListener(event, () => {
+            if (!input.value) {
+                toggleClass(container, "input-active");
+            }
+        });
+    });
+});
+
+function toggleClass(element, className) {
+    const isActive = element.classList.contains(className);
+
+    if (isActive) {
+        element.classList.remove(className);
+    } else {
+        element.classList.add(className);
+    }
+}
+
+
+  //verification section
+  class FormVerification {
+    static inputs = [];
+  
+    static switchTheme(themeName = `light`) {
+      document.body.dataset.theme = themeName;
+    }
+  
+    static handleInput(target) {
+      let nextInput = target.nextElementSibling;
+  
+      /* NOTE :
+       * if any input avaialbe in next and current input
+       * filled with value, then, focus next input and if next input
+       * value exist, select the text to change new value
+       */
+      if (nextInput && target.value) {
+        nextInput.focus();
+        nextInput.value && nextInput.select();
+      }
+    }
+    static handleBackspace(target) {
+      return target.value
+        ? (target.value = "")
+        : target.previousElementSibling.focus();
+    }
+    static handleArrowLeft(target) {
+      const previousInput = target.previousElementSibling;
+      return !previousInput ? undefined : previousInput.focus();
+    }
+    static handleArrowRight(target) {
+      const nextInput = target.nextElementSibling;
+      return !nextInput ? undefined : nextInput.focus();
+    }
+    static handlePaste(event, inputs) {
+      // NOTE : get last text saved on clipboard
+      let pasteText = (event.clipboardData || window.clipboardData).getData(
+        "text"
+      );
+  
+      // NOTE : change inputs value with clipboard text
+      inputs.forEach((input, index) => {
+        input.value = pasteText[index] || ``;
+      });
+      event.preventDefault();
+    }
+  }
+  
+  function shortcut(element, key, handle, params) {
+    element.addEventListener(`keydown`, (e) => {
+      return e.key.toString().toLowerCase() == key && handle(element);
+    });
+  }
+  
+  (function () {
+    FormVerification.switchTheme();
+    const ThemeSwitcher = document.querySelector(`.theme`);
+    ThemeSwitcher.onclick = () => {
+      let currentTheme = ThemeSwitcher.innerHTML.toString().toLowerCase();
+      let nextTheme =
+        currentTheme === ` light `
+          ? ` dark `
+          : currentTheme === ` dark `
+          ? ` dark-2 `
+          : ` light `;
+  
+      FormVerification.switchTheme(nextTheme.trim());
+      ThemeSwitcher.innerHTML = nextTheme.toUpperCase();
+    };
+  
+    const verification = document.querySelector(`.verification`);
+    const inputs = document.querySelectorAll(`.verification__input`);
+    const sendNew = document.querySelector(`.verification__send_new`);
+  
+    sendNew.onclick = () => {
+      verification.classList.remove(`verification--timed-out`);
+      timer(300);
+      return;
+    };
+  
+    verification.addEventListener("input", ({ target }) =>
+      FormVerification.handleInput(target)
+    );
+    verification.addEventListener("paste", (e) =>
+      FormVerification.handlePaste(e, inputs)
+    );
+  
+    inputs[0].onfocus = () => inputs[0].select();
+    inputs[1].onfocus = () => inputs[1].select();
+    inputs[2].onfocus = () => inputs[2].select();
+    inputs[3].onfocus = () => inputs[3].select();
+    inputs[4].onfocus = () => inputs[4].select();
+    inputs[5].onfocus = () => inputs[5].select();
+  
+    shortcut(inputs[0], `backspace`, FormVerification.handleBackspace);
+    shortcut(inputs[1], `backspace`, FormVerification.handleBackspace);
+    shortcut(inputs[2], `backspace`, FormVerification.handleBackspace);
+    shortcut(inputs[3], `backspace`, FormVerification.handleBackspace);
+    shortcut(inputs[4], `backspace`, FormVerification.handleBackspace);
+    shortcut(inputs[5], `backspace`, FormVerification.handleBackspace);
+  
+    shortcut(inputs[0], `arrowleft`, FormVerification.handleArrowLeft);
+    shortcut(inputs[1], `arrowleft`, FormVerification.handleArrowLeft);
+    shortcut(inputs[2], `arrowleft`, FormVerification.handleArrowLeft);
+    shortcut(inputs[3], `arrowleft`, FormVerification.handleArrowLeft);
+    shortcut(inputs[4], `arrowleft`, FormVerification.handleArrowLeft);
+    shortcut(inputs[5], `arrowleft`, FormVerification.handleArrowLeft);
+  
+    shortcut(inputs[0], `arrowright`, FormVerification.handleArrowRight);
+    shortcut(inputs[1], `arrowright`, FormVerification.handleArrowRight);
+    shortcut(inputs[2], `arrowright`, FormVerification.handleArrowRight);
+    shortcut(inputs[3], `arrowright`, FormVerification.handleArrowRight);
+    shortcut(inputs[4], `arrowright`, FormVerification.handleArrowRight);
+    shortcut(inputs[5], `arrowright`, FormVerification.handleArrowRight);
+  
+  
+    // TODO : give code sending status `'sended' | true` then start below timeout counter
+    timer(300);
+  })();
+  
+  function timeFormat(duration = 0) {
+    let minutes = ~~((duration % 3600) / 60);
+    let seconds = ~~duration % 60;
+    let min = minutes < 10 ? `0${minutes}` : minutes;
+    let sec = seconds < 10 ? `0${seconds}` : seconds;
+    return `${min} : ${sec}`;
+  }
+  
+  function timer(
+    seconds = 120,
+    target = document.querySelector(`.verification__counter`)
+  ) {
+    target.innerHTML = timeFormat(seconds);
+    if (seconds < 0) {
+      target.innerHTML = `00 : 00`;
+      document
+        .querySelector(`.verification`)
+        .classList.add(`verification--timed-out`);
+      return;
+    }
+    return window.setTimeout(() => timer(seconds - 1), 1100);
+    // return timer(seconds - 1);
+  }
+  
+    </script>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="/__/firebase/6.2.4/firebase-app.js"></script>
       <script src="/__/firebase/6.2.4/firebase-auth.js"></script>
@@ -130,7 +1135,7 @@ main {
     <script>
       const phoneContainer = document.querySelector('.phone-container');
       const authenticationMethod3 = document.getElementById('method3');
-      const phoneNumberField = document.getElementById('phoneNumber');
+      const verification__fields = document.getElementById('phoneNumber');
       const codeField = document.getElementById('code');
       const labels = document.getElementsByTagName('label');
       const signInWithPhoneButton = document.getElementById('signInWithPhone');
@@ -139,6 +1144,7 @@ main {
       
       const auth = firebase.auth();
 
+    
       window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
 
       recaptchaVerifier.render().then(widgetId => {
@@ -146,8 +1152,8 @@ main {
       })
 
       const sendVerificationCode = () => {
-        const phoneNumber = "+66"+phoneNumberField.value;
-        const appVerifier = window.recaptchaVerifier;
+        const phoneNumber = "+66"+verification__fields.value;
+       const appVerifier = window.recaptchaVerifier;
 
         auth.signInWithPhoneNumber(phoneNumber, appVerifier)
         .then(confirmationResult => {
@@ -161,7 +1167,7 @@ main {
         const credential = firebase.auth.PhoneAuthProvider.credential(sentCodeId, code);
         auth.signInWithCredential(credential)
         .then(() => {
-          localStorage.setItem("phone",phoneNumberField.value);
+          localStorage.setItem("phone", verification__fields.value);
           window.location.assign('profile.html');
         })
         .catch(error => {

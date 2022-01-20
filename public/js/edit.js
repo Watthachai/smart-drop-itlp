@@ -6,7 +6,6 @@ const labels = document.getElementsByTagName('label');
 const backButton = document.getElementById('back');
 const editButton = document.getElementById('edit');
 const deleteButton = document.getElementById('delete');
-const displayphoneNumberField = document.getElementById('displayphoneNumber');
 
 const auth = firebase.auth();
 
@@ -18,50 +17,21 @@ auth.onAuthStateChanged(user => {
 const editInformation = () => {
     const newNameAndPhoto = {
         newDisplayName: displayNameField.value,
-        newPhotoURL: photoField.value
     };
-
-    const newphoneNumber = displayphoneNumberField.value;
-    const newEmail = mailField.value;
-    const newPassword = passwordField.value;
     // Holds all the information about the current signed in user
     const user = auth.currentUser;
     changeNameAndPhoto(user, newNameAndPhoto);
-
-    // Changes the email and password if the respective fields are filled with values
-    if(newPassword && newEmail) {
-        const credential = createCredential(user);
-        changePassword(user, credential, newPassword);
-        changeEmail(user, credential, newEmail);
-    }
-    // Changes only the email
-    else if(newPassword) {
-        const credential = createCredential(user);
-        changePassword(user, credential, newPassword);
-    }
-    // Changes only password
-    else if(newEmail) {
-        const credential = createCredential(user);
-        changeEmail(user, credential, newEmail);
-    }
-    // Changes only phonenumber
-    else if(newphoneNumber) {
-        const credential = createCredential(user);
-        changePhoneNumber(user, credential, newphoneNumber);
-    }
-    
 }
-
 const changeNameAndPhoto = (user, newNameAndPhoto) => {
-    const {newDisplayName, newPhotoURL} = newNameAndPhoto;
+    const {newDisplayName} = newNameAndPhoto;
     // Changes displayName and photoURL properties
-    if(newDisplayName && newPhotoURL)
+    if(newDisplayName)
         user.updateProfile({
-            displayName: newDisplayName,
-            photoURL: newPhotoURL
+            displayName: newDisplayName
         })
         .then(() => {
             console.log('Profile Updated Successfully !');
+            window.location.href = 'profile.html';
         })
         .catch(error => {
             console.error(error);
@@ -73,6 +43,7 @@ const changeNameAndPhoto = (user, newNameAndPhoto) => {
         })
         .then(() => {
             console.log('Display Name Updated Successfully !');
+            window.location.href = 'profile.html';
         })
         .catch(error => {
             console.error(error);
@@ -100,17 +71,6 @@ const createCredential = user => {
         password
     );
     return credential;
-}
-
-const changePhoneNumber = (user, credential, newphoneNumber) => {
-    user.reauthenticateWithCredential(credential)
-    .then(() => {
-        user.updatephoneNumber(newphoneNumber);
-        console.log('Phone Updated!')
-    })
-    .catch(error => {
-        console.error(error);
-    })
 }
 
 const changePassword = (user, credential, newPassword) => {
@@ -157,40 +117,12 @@ backButton.addEventListener('click', () => {
 });
 
 //Animations
-mailField.addEventListener('focus', () => {
-    labels.item(0).className = "focused-field";
-});
-
-passwordField.addEventListener('focus', () => {
-    labels.item(1).className = "focused-field";
-});
-
-mailField.addEventListener('blur', () => {
-    if(!mailField.value)
-        labels.item(0).className = "unfocused-field";
-});
-
-passwordField.addEventListener('blur', () => {
-    if(!passwordField.value)
-        labels.item(1).className = "unfocused-field";
-});
 
 displayNameField.addEventListener('focus', () => {
-    labels.item(2).className = "focused-field";
-});
-displayphoneNumberField.addEventListener('focus', () =>{
-    labels.item,(4)
-})
-photoField.addEventListener('focus', () => {
-    labels.item(3).className = "focused-field";
+    labels.item(0).className = "focused-field";
 });
 
 displayNameField.addEventListener('blur', () => {
     if(!displayNameField.value)
-        labels.item(2).className = "unfocused-field";
-});
-
-photoField.addEventListener('blur', () => {
-    if(!photoField.value)
-        labels.item(3).className = "unfocused-field";
+        labels.item(0).className = "unfocused-field";
 });

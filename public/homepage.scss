@@ -1,0 +1,284 @@
+/* CREDIT : YEK/SASS (https://github.com/yek-org/yek-sass) */
+body,
+.verification {
+  @include center(f-col);
+}
+
+.verification {
+  /*
+  HINT : `--m-` = main
+  HINT : `--w-` = wrap
+  */
+  --m-width: 350px;
+  --m-height: 350px;
+  --w-width: 300px;
+  --w-height: 325px;
+
+  height: var(--m-height);
+  width: var(--m-width);
+
+  &,
+  &__wrap,
+  &__fields,
+  &__field,
+  &__verify {
+    @include center;
+  }
+
+  &__wrap,
+  &__fields,
+  &__field,
+  &__header,
+  &__verify,
+  &__timeout {
+    @include clear-space;
+    width: val(w-width);
+  }
+
+  &__wrap {
+    @include align(space-between);
+    flex-direction: column;
+    height: val(w-height);
+  }
+
+  &__title {
+    @include clear-space;
+    margin-bottom: 12px;
+  }
+  &__description {
+    text-align: justify;
+    line-height: 1.6rem;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  &__header {
+    height: 35%;
+  }
+  &__fields {
+    height: 25%;
+  }
+  &__verify {
+    height: 25%;
+
+    p {
+      @include center;
+    }
+
+    & p,
+    &_btn {
+      @include size;
+    }
+  }
+  &__verify_btn {
+    @include clear-space;
+    @include clear-button($effect: true);
+    @include radius;
+    height: 52px;
+    padding: 8px 16px;
+    font-size: 1.25rem;
+  }
+
+  &__field {
+    @include align(space-between);
+    @include clear-input(true, $effect: false);
+    @include height(60px);
+    &:hover,
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &__input {
+    @include clear-input;
+    @include size(60px, 60px);
+    @include radius;
+    padding: 16px 0;
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__timeout {
+    @include center;
+    height: 25px;
+
+    p {
+      @include size;
+      @include clear-space;
+      font-size: 0.9rem;
+      text-align: justify;
+      // text-align-last: left;
+      padding: 4px 2px;
+      padding-left: 4px;
+    }
+
+    strong {
+      display: inline-block;
+      width: 55px;
+      text-align: center;
+    }
+  }
+
+  &__timeout,
+  &__header,
+  &__fields {
+    margin-right: 9px;
+    margin-left: 9px;
+  }
+
+  &__send_new {
+    @include clear-button;
+    @include size(auto, 25px);
+    @include radius(15);
+    top: 50%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 5px 2px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    transition: top 0.5s 0.1s ease, height 0.5s 0.1s ease, transform 0.3s ease,
+      background 0.3s ease;
+  }
+
+  &--timed-out {
+    @include relative;
+  }
+  &--timed-out &__send_new {
+    @include clear-button($effect: true);
+    @include absolute(0);
+    @include size;
+    background: color(primary);
+    color: color(white);
+    font-weight: bold;
+  }
+}
+
+/* --- RESPONSIVE --- */
+
+/* [media MOBILE] */
+@media (max-width: 375px) {
+  .verification {
+    --m-width: 350px;
+    --m-height: 325px;
+    --w-width: 300px;
+    --w-height: 325px;
+    margin-top: -75px;
+
+    &__input {
+      @include size(55px, 55px);
+      padding: 8px 0;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* --- THEME --- */
+
+/* [DEFAUTL] */
+.verification {
+  background-color: color(light-gray);
+  color: color(secondary);
+
+  &__title {
+    color: color(primary);
+  }
+
+  &__description {
+    color: color(secondary);
+  }
+
+  &__timeout {
+    color: color(secondary);
+  }
+
+  &__verify_btn {
+    background: color(primary);
+    color: color(light-gray);
+  }
+
+  &__input {
+    background: color(gray);
+
+    &:hover {
+      box-shadow: 0 0 0 0.25rem color(input-hover);
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.25rem color(input-focus);
+    }
+  }
+}
+
+// @media (prefers-color-scheme: light)
+[data-theme] {
+  background-color: color(light-gray);
+  color: color(black);
+}
+
+/* [theme DARK] */
+// @media (prefers-color-scheme: dark)
+[data-theme="dark"] {
+  @include set-colors(
+    (
+      primary: #abbcf2,
+      secondary: #6f7a9d,
+      gray: #8d9bc7,
+      light-gray: #333848,
+      input-hover: #abbcf2,
+      input-focus: #abbcf2
+    )
+  );
+
+  ::selection {
+    color: color(light-gray);
+    background: color(primary);
+  }
+}
+
+[data-theme="dark-2"] {
+  /* ALT : secondary: #2bbdff */
+  @include set-colors(
+    (
+      primary: #ecb365,
+      secondary: #5296b5,
+      gray: #064663,
+      light-gray: #04293a,
+      input-hover: #06466399,
+      input-focus: #06466373
+    )
+  );
+
+  .verification {
+    &__description,
+    &__timeout {
+      color: color(secondary);
+    }
+    &__input {
+      color: color(primary);
+    }
+  }
+}
+
+::selection {
+  color: color(gray);
+  background: color(primary);
+}
+
+.theme {
+  @include clear-button;
+  @include fixed($left: 15px, $bottom: 15px);
+  @include size(95px, 35px);
+  border-radius: 50px;
+  padding: 9px;
+  color: color(white);
+  background: color(secondary);
+  opacity: 0.3;
+
+  &:hover {
+    background: color(primary);
+    opacity: 1;
+  }
+}
