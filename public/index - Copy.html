@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="style/index.css">
+</head>
+<body>
+    <div class="container" align="center" style="padding-top: 50px;">   
+
+<!---CARD -->
+    <div class="row">
+        <div class="col-sm">
+            <a id="sendbox">
+      <div class="card">
+        <h1>ฝากพัสดุ</h1>
+      </div></a>
+        </div>
+        <div class="col-sm">
+            <a href="homepage.html">
+      <div class="card">
+        <h1>รับพัสดุ</h1>
+      </div>
+      </a>
+        </div>
+      </div>
+<!---CARD -->
+</div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBGHYVjtQNRZIvb0rhUeV6g0ByVAGmidmQ",
+            authDomain: "smartdrop-itlp2022.firebaseapp.com",
+            databaseURL: "https://smartdrop-itlp2022-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "smartdrop-itlp2022",
+            storageBucket: "smartdrop-itlp2022.appspot.com",
+            messagingSenderId: "68583609225",
+            appId: "1:68583609225:web:c14789335702c55eb60758",
+            measurementId: "G-88E68YDK6M"
+          };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import {getDatabase, ref, set, get, child, update, remove} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
+        const db = getDatabase();
+
+        var boxfull = document.getElementById("bf");
+        var btnsendbox = document.getElementById("sendbox");
+        const refbtn = ref(db);
+        
+          function cnkSendbtn(){
+              const sendref = ref(db);
+              get(child(sendref,"lockers/box1")).then((box1)=>{
+                if(box1.exists()){
+                    if(box1.val().status_item == 0){
+                        window.location.assign("sendpage.html");
+                    }else{
+                        get(child(sendref,"lockers/box2")).then((box2)=>{
+                            if(box2.exists()){
+                                if(box2.val().status_item == 0){
+                                    window.location.assign("sendpage.html");
+                                }else{
+                                    get(child(sendref,"lockers/box3")).then((box3)=>{
+                                        if(box3.exists()){
+                                            if(box3.val().status_item == 0){
+                                                window.location.assign("sendpage.html");
+                                            }else{
+                                                alert("ตู้เต็มแล้ว!");
+                                            }
+                                        }
+                                    })
+                                    .catch((error)=>{
+                                        alert(error);
+                                    });
+                                }
+                            }
+                        })
+                        .catch((error)=>{
+                            alert(error);
+                        });
+                    }
+                }
+              })
+              .catch((error)=>{
+                alert(error);
+              });
+          }
+
+          //event add
+          btnsendbox.addEventListener('click',cnkSendbtn);
+      </script>
+</body>
+</html>

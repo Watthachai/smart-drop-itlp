@@ -8,42 +8,211 @@
     <title>ส่งของ</title>
 </head>
 <style media="screen">
-    .container {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);
+    body {
+      font-family: "Open Sans";
+      line-height: 200%;
+      background: #212534;
+    }
+    
+    .main {
+      width: 800px;
+      margin: 160px auto;
+      text-align: center;
+    }
+    
+    h1,
+    h2,
+    h3 {
+      color: #fff;
+    }
+    
+    h1 {
+      margin-bottom: 30px;
+      font-size: 44px;
+    }
+    
+    h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+    
+    h3 {
+      font-size: 21px;
+    }
+    
+    p {
+      font-size: 18px;
+      color: #ffd5df;
+    }
+    
+    .btn {
+      margin: 30px 5px;
+      padding: 2.2% 5.5%;
+      display: inline-block;
+      -webkit-transition: all linear 0.15s;
+      transition: all linear 0.15s;
+      border-radius: 3px;
+      background-color: #2e773a !important;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: rgb(255, 255, 255);
+    }
 
-.card-example {
-  max-width: 500px;
-  margin: 0 auto;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-.card-example .card-header {
-  font-weight: 900;
-  color: #ffffff;
-  background: #20bc4c;
-}
+    .backbtn {
+        margin-top: 30px;
+      display: inline-block;
+      -webkit-transition: all linear 0.15s;
+      transition: all linear 0.15s;
+      border-radius: 3px;
+      background-color: #435469 !important;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: rgb(255, 255, 255);
+    }
+    .btn:hover {
+      opacity: 0.75;
+      color: #000000;
+    }
+    
+    .popup-wrap {
+      width: 100%;
+      height: 100%;
+      display: none;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      content: "";
+      background: rgba(0, 0, 0, 0.85);
+    }
+    
+    .popup-box {
+      width: 400px;
+      padding: 70px;
+      transform: translate(-50%, -50%) scale(0.5);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.5);
+      border-radius: 3px;
+      background: #fff;
+      text-align: center;
+    }
+    .popup-box h2 {
+      color: #1a1a1a;
+    }
+    .popup-box h3 {
+      color: #888;
+    }
+    .popup-box .close-btn {
+      width: 35px;
+      height: 35px;
+      display: inline-block;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      -webkit-transition: all ease 0.5s;
+      transition: all ease 0.5s;
+      border-radius: 1000px;
+      background: #d75f70;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      line-height: 190%;
+    }
+    .popup-box .close-btn:hover {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+    
+    .transform-in,
+    .transform-out {
+      display: block;
+      -webkit-transition: all ease 0.5s;
+      transition: all ease 0.5s;
+    }
+    
+    .transform-in {
+      -webkit-transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .transform-out {
+      -webkit-transform: translate(-50%, -50%) scale(0.5);
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    input {
+        position: relative;
+        margin: 16px 0;
+        font-size: 28px !important;
+      }
+      
+     .input label {
+        position: absolute;
+        top: 16px;
+        left: 20px;
+        font-weight: 500;
+        color: var(--grey-400);
+        pointer-events: none;
+        transform-origin: top left;
+        transition: transform 200ms;
+      }
+      
+       input{
+        padding: 24px 200px 14px 20px;
+        width: 85%;
+        outline: none;
+        border: none;
+        font-size: 16px;
+        border-radius: 8px;
+        background: #ffffff;
+        transition: background-color 160ms;
+      }
+      
+      input:focus {
+        background: #c7ddfa;
+      }
+      
+      .input-active label {
+        transform: scale(0.7, 0.7) translate(0, -10px);
+      }
 </style>
 <body>
     
-    <div class="container">
-        <div class="card-example">
-            <div class="card card-inverse" style="background: #333; border-color: #333; color: rgb(255, 255, 255);">
-              <div class="card-block">
-                <div class="row" align="center">
-  
-                        <div class="card"></div>
-                        <input type="tel" id="phone" class="form-control"placeholder="ใส่เบอร์ผู้รับ"required>
-                        <button id="sender">accept</button>
-    
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
+    <div class="main">
+        
+        <h1>Smart Drop</h1>
+        <p>
+            - โปรดเช็คเบอร์โทรศัพท์ของผู้รับพัสดุให้ถูกต้อง
+        </p>
 
-
+        <input type="tel" id="phone" class="" placeholder="ใส่เบอร์ผู้รับ" required>
+        <button class="btn green" id="sender">ยืนยัน</button>
+        <a href="index.html"><button class="btn backbtn" >ย้อนกลับ</button></a>
+      </div>
+      
+    <script>
+        $(document).ready(function() {
+            $('.popup-btn').click(function(e) {
+              $('.popup-wrap').fadeIn(500);
+              $('.popup-box').removeClass('transform-out').addClass('transform-in');
+          
+              e.preventDefault();
+            });
+          
+            $('.popup-close').click(function(e) {
+              $('.popup-wrap').fadeOut(500);
+              $('.popup-box').removeClass('transform-in').addClass('transform-out');
+          
+              e.preventDefault();
+            });
+          });
+    </script>
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";

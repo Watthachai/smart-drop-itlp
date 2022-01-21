@@ -6,12 +6,16 @@ const labels = document.getElementsByTagName('label');
 const backButton = document.getElementById('back');
 const editButton = document.getElementById('edit');
 const deleteButton = document.getElementById('delete');
+const displayNameHolder = document.getElementById('displayNameHolder');
 
 const auth = firebase.auth();
 
 // Just to print your current user information so you can the changes once done
 auth.onAuthStateChanged(user => {
     console.log(user);
+
+    if(user.displayName)
+    displayNameHolder.innerHTML = user.displayName;
 });
 
 const editInformation = () => {
@@ -95,20 +99,6 @@ const changeEmail = (user, credential, newEmail) => {
     })
 }
 
-const deleteAccount = () => {
-    const user = auth.currentUser;
-    const credential = createCredential(user);
-    user.reauthenticateWithCredential(credential)
-    .then(() => {
-        user.delete();
-        console.log('Your Account Has Been Deleted!');
-    })
-    .catch(error => {
-        console.error(error);
-    })
-}
-
-deleteButton.addEventListener('click', deleteAccount);
 
 editButton.addEventListener('click', editInformation);
 
