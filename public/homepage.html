@@ -44,10 +44,9 @@ body {
 
 .container {
   position: relative;
-  display: flex;
   flex-direction: column;
-  width: 450px;
-  height: 660px;
+  width: 350px;
+  height: 560px;
   border-radius: 24px;
   padding: 24px;
   background-color: var(--white);
@@ -76,7 +75,7 @@ body {
 
 .header-image svg {
   position: relative;
-  fill: var(--purple-600);
+  fill: #293554;
 }
 
 .header-image-particle {
@@ -167,7 +166,7 @@ body {
   font-weight: 500;
   font-size: 16px;
   color: var(--white);
-  background-color: var(--purple-600);
+  background-color: #293554;
   -webkit-appearance: none;
   cursor: pointer;
   font-family: inherit;
@@ -365,7 +364,7 @@ body {
 }
 
 .input input {
-  padding: 24px 200px 14px 20px;
+  padding: 24px 14px 14px 20px;
   width: 100%;
   outline: none;
   border: none;
@@ -456,7 +455,7 @@ body {
 body,
 .verification {
   display: flex;
-  flex-direction: column;
+  flex-direction: initial;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -468,12 +467,11 @@ body,
   HINT : `--m-` = main
   HINT : `--w-` = wrap
   */
-  --m-width: 450px;
-  --m-height: 350px;
-  --w-width: 400px;
-  --w-height: 325px;
-  height: var(--m-height);
-  width: var(--m-width);
+  --m-width: 400px;
+  --m-height: 250px;
+  --w-width: 300px;
+  --w-height: 250px;
+
 }
 .verification, .verification__wrap, .verification__fields, .verification__field, .verification__verify {
   display: flex;
@@ -704,8 +702,8 @@ body,
 }
 
 [data-theme] {
-  background-color: var(--color-light-gray);
-  color: var(--color-black);
+  background-color: #121621;
+  color:#121621;
 }
 
 /* [theme DARK] */
@@ -828,14 +826,14 @@ body,
     <header class="verification__header">
       <h2 class="verification__title">Verification Code</h2>
       <p class="verification__description">
-        เราได้ส่งรหัสยืนยันจำนวน 6 หลักไปยังมือถือของคุณแล้ว
+        เราได้ส่งรหัสยืนยันไปยังมือถือของคุณแล้ว
       </p>
     </header>
 
     <section class="verification__fields">
       <fieldset class="verification__field">
           <div class="input app-input">
-            <input type="text" id="code" name="code"><br><br><br>
+            <input type="text" id="code" name="code">
               <label for="email">รหัสยืนยัน</label>
           </div>
       </fieldset>
@@ -843,7 +841,7 @@ body,
     <div id="recaptcha-container"></div>
     <section class="verification__verify">
       <p>
-        <button type="button" id="signInWithPhone"  class="verification__verify_btn" >Login</button>
+        <button type="button" id="signInWithPhone"  class="verification__verify_btn" >Login</button><br>
       </p>
     </section>
 
@@ -866,33 +864,6 @@ body,
     </div>
 </div>
 
-  <div class="wrapper">
-  <fieldset>
-    <div>
-          <img src="./img/phone.svg" width="20px" alt="signin with your phone number">
-      </div>
-    <div>
-      <label for="phoneNumber">Phone Number</label> <br>
-      <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]"/> <br>
-    </div>
-    <div>
-      <label for="code">Code</label> <br>
-      <input type="text" id="code" name="code"/> <br>
-    </div>
-    <div id="recaptcha-container"></div>
-    <button id="signInWithPhone">Login</button>
-    <button id="getCode">Get Code</button>
-    
-    <div class="feedbackContainer success">
-      <div class="feedbackIcon"></div>
-      <p class="feedbackMessage">Signed up Successfully</p>
-    </div>
-    <div class="feedbackContainer failure">
-      <div class="feedbackIcon"></div>
-      <p class="feedbackMessage">Signing up failed</p>
-    </div>
-  </fieldset>
-  </div>
 
     <script>
       const modal = document.querySelector(".app-modal");
