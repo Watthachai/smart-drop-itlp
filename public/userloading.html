@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="9">
+    <meta http-equiv="refresh" content="16">
     <title>รับผัสดุ | Smart Drop</title>
     <style>
         :root {
@@ -20,7 +20,8 @@
             height: 320px;
             position: relative;
             transform-style: preserve-3d;
-            top: 150px;
+            top: 50px;
+            left: 60px;
           }
           @media (max-width: 480px) {
             .loader {
@@ -660,7 +661,7 @@
             top: 50px;
             left: 50%;
             font-family: Arial;
-            max-width: 320px;
+            max-width: 300px;
             font-size: 33px;
             line-height: 40px;
             z-index: 1;
@@ -681,34 +682,490 @@
               transform: translateZ(400px);
             }
           }
+      
+          
+      
+          /* Mixins */
+/* bg shortcodes */
+.bg-gradient1 span,
+.bg-gradient1:before {
+  background: #952d2d !important;
+  background: linear-gradient(180deg, #fa7e29 0%, #F6682F 80%, #F6682F 100%);
+}
+
+/* General */
+.wrapper {
+  margin: 4% auto;
+  text-align: center;
+}
+
+h3 {
+  color: #666a73;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover, a:focus, a:active {
+  text-decoration: none;
+}
+
+/* fancy Button */
+.fancy-button {
+  display: inline-block;
+  margin: 20px;
+  font-family: "Heebo", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 24px;
+  color: #ffffff;
+  position: relative;
+}
+.fancy-button.bg-gradient1 {
+  text-shadow: 0px 0px 1px #BF4C28;
+}
+.fancy-button.bg-gradient2 {
+  text-shadow: 0px 0px 1px #227270;
+}
+.fancy-button.bg-gradient3 {
+  text-shadow: 0 0 1px #546082;
+}
+.fancy-button:before {
+  content: "";
+  display: inline-block;
+  height: 40px;
+  position: absolute;
+  bottom: -1px;
+  left: 10px;
+  right: 10px;
+  z-index: -1;
+  border-radius: 2em;
+  filter: blur(14px) brightness(0.9);
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-out;
+  top: -270px;
+  left: -480px;
+  right: 480px;
+}
+.fancy-button i {
+  margin-top: -2px;
+  font-size: 1.265em;
+  vertical-align: middle;
+}
+.fancy-button span {
+  display: inline-block;
+  padding: 16px 20px;
+  border-radius: 50em;
+  position: relative;
+  z-index: 2;
+  will-change: transform, filter;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-out;
+  left: -480px;
+  top: -280px;
+}
+.fancy-button:focus {
+  color: #ffffff;
+}
+.fancy-button:hover {
+  color: #ffffff;
+}
+.fancy-button:hover span {
+  filter: brightness(0.9) contrast(1.2);
+  transform: scale(0.96);
+}
+.fancy-button:hover:before {
+  bottom: 3px;
+  filter: blur(6px) brightness(0.8);
+}
+.fancy-button:active span {
+  filter: brightness(0.75) contrast(1.7);
+}
+.fancy-button.pop-onhover span {
+  border-radius: 4px;
+}
+.fancy-button.pop-onhover:before {
+  opacity: 0;
+  bottom: 10px;
+}
+.fancy-button.pop-onhover:hover:before {
+  bottom: -7px;
+  opacity: 1;
+  filter: blur(16px);
+}
+.fancy-button.pop-onhover:hover span {
+  transform: scale(1);
+}
+.fancy-button.pop-onhover:hover:active span {
+  filter: brightness(1) contrast(1);
+  transform: scale(1);
+  transition: all 0.2s ease-out;
+}
+.fancy-button.pop-onhover:hover:active:before {
+  bottom: 0;
+  filter: blur(5px) brightness(0.85);
+  transition: all 0.2s ease-out;
+}
+
+.pop-onhover.bg-gradient3 span:hover {
+  background: #B9AEF0;
+  background: linear-gradient(120deg, #B9AEF0 0%, #ADA1EB 80%, #ADA1EB 100%);
+}
+
+.bg-gradient4:before {
+  bottom: 2px;
+  opacity: 0.6;
+  transition: all 0.3s ease-out;
+}
+
+.bg-gradient4 {
+  transition: all 1s ease;
+}
+.bg-gradient4 span {
+  outline: 0px solid transparent;
+}
+.bg-gradient4:hover span {
+  background: #FC3D7C;
+  background: linear-gradient(-25deg, #FC3D7C 0%, #F76A34 80%, #F76A34 100%);
+}
+.bg-gradient4:focus span, .bg-gradient4:active span {
+  background: #FC3D7C;
+  background: linear-gradient(25deg, #FC3D7C 0%, #F76A34 80%, #F76A34 100%);
+}
+.bg-gradient4:focus span {
+  box-shadow: 0 0 9px #00FFF8;
+}
+.bg-gradient4:active span {
+  filter: brightness(0.85) contrast(1.3);
+}
+
+.bg-gradient4 span {
+  text-transform: capitalize;
+}
+
+          /*Timer countdown*/
+          * {
+            box-sizing: border-box;
+          }
           
           html {
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
+            font-size: 2.6666666667vmax;
           }
-          
-          * {
-            box-sizing: inherit;
-          }
-          *:before, *:after {
-            box-sizing: inherit;
+          @media (max-width: 992px) {
+            html {
+              font-size: 80px;
+            }
           }
           
           body {
-            min-height: 45vh;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.5rem;
+            font-family: "Finger Paint", cursive;
+          }
+          
+          .wrapper {
+            position: relative;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            left: 50%;
+            top :-60px;
+          }
+          
+          .timer {
+            width: 100%;
+            height: 100%;
+            border: 0.1rem solid #aecbba;
+            border-radius: inherit;
             display: flex;
             justify-content: center;
             align-items: center;
           }
-          body .dribbble {
-            position: fixed;
-            display: block;
-            right: 24px;
-            bottom: 24px;
+          .timer::before {
+            content: "";
+            -webkit-animation: countdown steps(18) both 18s infinite;
+                    animation: countdown steps(18) both 18s infinite;
           }
-          body .dribbble img {
-            display: block;
-            width: 76px;
+          
+          .border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0.1rem solid #538d6d;
+            border-radius: inherit;
+            -webkit-animation: round steps(18) both 18s infinite;
+                    animation: round steps(18) both 18s infinite;
+          }
+          
+          @-webkit-keyframes countdown {
+            0% {
+              content: "16";
+            }
+            5.8823529412% {
+              content: "16";
+            }
+            11.7647058824% {
+              content: "15";
+            }
+            17.6470588235% {
+              content: "14";
+            }
+            23.5294117647% {
+              content: "13";
+            }
+            29.4117647059% {
+              content: "12";
+            }
+            35.2941176471% {
+              content: "11";
+            }
+            41.1764705882% {
+              content: "10";
+            }
+            47.0588235294% {
+              content: "9";
+            }
+            52.9411764706% {
+              content: "8";
+            }
+            58.8235294118% {
+              content: "7";
+            }
+            64.7058823529% {
+              content: "6";
+            }
+            70.5882352941% {
+              content: "5";
+            }
+            76.4705882353% {
+              content: "4";
+            }
+            82.3529411765% {
+              content: "3";
+            }
+            88.2352941176% {
+              content: "2";
+            }
+            94.1176470588% {
+              content: "1";
+            }
+            100% {
+              content: "0";
+            }
+          }
+          
+          @keyframes countdown {
+            0% {
+              content: "17";
+            }
+            5.8823529412% {
+              content: "16";
+            }
+            11.7647058824% {
+              content: "15";
+            }
+            17.6470588235% {
+              content: "14";
+            }
+            23.5294117647% {
+              content: "13";
+            }
+            29.4117647059% {
+              content: "12";
+            }
+            35.2941176471% {
+              content: "11";
+            }
+            41.1764705882% {
+              content: "10";
+            }
+            47.0588235294% {
+              content: "9";
+            }
+            52.9411764706% {
+              content: "8";
+            }
+            58.8235294118% {
+              content: "7";
+            }
+            64.7058823529% {
+              content: "6";
+            }
+            70.5882352941% {
+              content: "5";
+            }
+            76.4705882353% {
+              content: "4";
+            }
+            82.3529411765% {
+              content: "3";
+            }
+            88.2352941176% {
+              content: "2";
+            }
+            94.1176470588% {
+              content: "1";
+            }
+            100% {
+              content: "0";
+            }
+          }
+          @-webkit-keyframes round {
+            0% {
+              -webkit-mask: conic-gradient(transparent 0%, #000 0%);
+                      mask: conic-gradient(transparent 0%, #000 0%);
+            }
+            5.8823529412% {
+              -webkit-mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
+                      mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
+            }
+            11.7647058824% {
+              -webkit-mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
+                      mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
+            }
+            17.6470588235% {
+              -webkit-mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
+                      mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
+            }
+            23.5294117647% {
+              -webkit-mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
+                      mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
+            }
+            29.4117647059% {
+              -webkit-mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
+                      mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
+            }
+            35.2941176471% {
+              -webkit-mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
+                      mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
+            }
+            41.1764705882% {
+              -webkit-mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
+                      mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
+            }
+            47.0588235294% {
+              -webkit-mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
+                      mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
+            }
+            52.9411764706% {
+              -webkit-mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
+                      mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
+            }
+            58.8235294118% {
+              -webkit-mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
+                      mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
+            }
+            64.7058823529% {
+              -webkit-mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
+                      mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
+            }
+            70.5882352941% {
+              -webkit-mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
+                      mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
+            }
+            76.4705882353% {
+              -webkit-mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
+                      mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
+            }
+            82.3529411765% {
+              -webkit-mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
+                      mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
+            }
+            88.2352941176% {
+              -webkit-mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
+                      mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
+            }
+            94.1176470588% {
+              -webkit-mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
+                      mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
+            }
+            100% {
+              -webkit-mask: conic-gradient(transparent 100%, #000 100%);
+                      mask: conic-gradient(transparent 100%, #000 100%);
+            }
+          }
+          @keyframes round {
+            0% {
+              -webkit-mask: conic-gradient(transparent 0%, #000 0%);
+                      mask: conic-gradient(transparent 0%, #000 0%);
+            }
+            5.8823529412% {
+              -webkit-mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
+                      mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
+            }
+            11.7647058824% {
+              -webkit-mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
+                      mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
+            }
+            17.6470588235% {
+              -webkit-mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
+                      mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
+            }
+            23.5294117647% {
+              -webkit-mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
+                      mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
+            }
+            29.4117647059% {
+              -webkit-mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
+                      mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
+            }
+            35.2941176471% {
+              -webkit-mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
+                      mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
+            }
+            41.1764705882% {
+              -webkit-mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
+                      mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
+            }
+            47.0588235294% {
+              -webkit-mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
+                      mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
+            }
+            52.9411764706% {
+              -webkit-mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
+                      mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
+            }
+            58.8235294118% {
+              -webkit-mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
+                      mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
+            }
+            64.7058823529% {
+              -webkit-mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
+                      mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
+            }
+            70.5882352941% {
+              -webkit-mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
+                      mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
+            }
+            76.4705882353% {
+              -webkit-mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
+                      mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
+            }
+            82.3529411765% {
+              -webkit-mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
+                      mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
+            }
+            88.2352941176% {
+              -webkit-mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
+                      mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
+            }
+            94.1176470588% {
+              -webkit-mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
+                      mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
+            }
+            100% {
+              -webkit-mask: conic-gradient(transparent 100%, #000 100%);
+                      mask: conic-gradient(transparent 100%, #000 100%);
+            }
           }
     </style>
 </head>
@@ -741,7 +1198,15 @@
     <div class="ground">
       <div></div>
     </div>
-  </div><small>กรุณารับพัสดุของท่านในช่องที่ : <label style="font-size: 1em;" id="NumberBoxText"></label><br>แล้วกรุณารอซักครู่</small>
+  </div>
+  <a href="profile.html" class="fancy-button bg-gradient1"><span><i class="fa fa-ticket"></i>ยกเลิก</span></a>
+  <small>กรุณารับพัสดุของท่านในช่องที่ : <label style="font-size: 1em;" id="NumberBoxText"></label><br> เหลือเวลาอีก : <label><div class="wrapper">
+    <div class="timer"></div>
+    <div class="border"></div>
+  </div></label></small>
+
+   
+
 
   <script type="module">
     // Import the functions you need from the SDKs you need

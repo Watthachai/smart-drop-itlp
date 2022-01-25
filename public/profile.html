@@ -244,9 +244,9 @@
             const openref = ref(db);
             get(child(openref,"lockers/box1")).then((op1)=>{
               if(op1.exists()){
-                if(op1.val().status_active==0){
+                if(op1.val().status_sw==0){
                   update(ref(db,"lockers/box1"),{
-                    status_active: number_active
+                    status_sw: number_active
                   })
                   .then(()=>{
                     localStorage.setItem("activebox","box1");
@@ -270,9 +270,9 @@
             const openref = ref(db);
             get(child(openref,"lockers/box2")).then((op2)=>{
               if(op2.exists()){
-                if(op2.val().status_active==0){
+                if(op2.val().status_sw==0){
                   update(ref(db,"lockers/box2"),{
-                    status_active: number_active
+                    status_sw: number_active
                   })
                   .then(()=>{
                     localStorage.setItem("activebox","box2");
@@ -296,9 +296,9 @@
             const openref = ref(db);
             get(child(openref,"lockers/box3")).then((op3)=>{
               if(op3.exists()){
-                if(op3.val().status_active==0){
+                if(op3.val().status_sw==0){
                   update(ref(db,"lockers/box3"),{
-                    status_active: number_active
+                    status_sw: number_active
                   })
                   .then(()=>{
                     localStorage.setItem("activebox","box3");
