@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="refresh" content="16">
+      <meta http-equiv="refresh" content="20">
       <title>ฝากพัสดุ | Smart Drop</title>
       <style>
         :root {
@@ -748,7 +748,7 @@ a:hover, a:focus, a:active {
   filter: blur(14px) brightness(0.9);
   transform-style: preserve-3d;
   transition: all 0.3s ease-out;
-  top: -270px;
+  top: -230px;
   left: -480px;
   right: 480px;
 }
@@ -767,7 +767,7 @@ a:hover, a:focus, a:active {
   transform-style: preserve-3d;
   transition: all 0.3s ease-out;
   left: -480px;
-  top: -280px;
+  top: -240px;
 }
 .fancy-button:focus {
   color: #ffffff;
@@ -858,10 +858,14 @@ a:hover, a:focus, a:active {
           }
           @media (max-width: 992px) {
             html {
-              font-size: 80px;
+             font-size: 2.6666666667vmax;
             }
           }
-          
+          @media (max-width: 768px) {
+            html{
+              font-size: 2.6666666667vmax;
+          }
+        }
           body {
             min-height: 100vh;
             display: flex;
@@ -891,8 +895,8 @@ a:hover, a:focus, a:active {
           }
           .timer::before {
             content: "";
-            -webkit-animation: countdown steps(18) both 18s infinite;
-                    animation: countdown steps(18) both 18s infinite;
+            -webkit-animation: countdown steps(21) both 21s infinite;
+                    animation: countdown steps(21) both 21s infinite;
           }
           
           .border {
@@ -903,60 +907,69 @@ a:hover, a:focus, a:active {
             height: 100%;
             border: 0.1rem solid #538d6d;
             border-radius: inherit;
-            -webkit-animation: round steps(18) both 18s infinite;
-                    animation: round steps(18) both 18s infinite;
+            -webkit-animation: round steps(21) both 21s infinite;
+                    animation: round steps(21) both 21s infinite;
           }
           
           @-webkit-keyframes countdown {
             0% {
+              content: "20";
+            }
+            5% {
+              content: "19";
+            }
+            10% {
+              content: "18";
+            }
+            15% {
+              content: "17";
+            }
+            20% {
               content: "16";
             }
-            5.8823529412% {
-              content: "16";
-            }
-            11.7647058824% {
+            25% {
               content: "15";
             }
-            17.6470588235% {
+            30% {
               content: "14";
             }
-            23.5294117647% {
+            35% {
               content: "13";
             }
-            29.4117647059% {
+            40% {
               content: "12";
             }
-            35.2941176471% {
+            45% {
               content: "11";
             }
-            41.1764705882% {
+            50% {
               content: "10";
             }
-            47.0588235294% {
+            55% {
               content: "9";
             }
-            52.9411764706% {
+            60% {
               content: "8";
             }
-            58.8235294118% {
+            65% {
               content: "7";
             }
-            64.7058823529% {
+            70% {
               content: "6";
             }
-            70.5882352941% {
+            75% {
               content: "5";
             }
-            76.4705882353% {
+            80% {
               content: "4";
             }
-            82.3529411765% {
+            85% {
               content: "3";
             }
-            88.2352941176% {
+            90% {
               content: "2";
             }
-            94.1176470588% {
+            95% {
               content: "1";
             }
             100% {
@@ -966,54 +979,63 @@ a:hover, a:focus, a:active {
           
           @keyframes countdown {
             0% {
+              content: "20";
+            }
+            5% {
+              content: "19";
+            }
+            10% {
+              content: "18";
+            }
+            15% {
               content: "17";
             }
-            5.8823529412% {
+            20% {
               content: "16";
             }
-            11.7647058824% {
+            25% {
               content: "15";
             }
-            17.6470588235% {
+            30% {
               content: "14";
             }
-            23.5294117647% {
+            35% {
               content: "13";
             }
-            29.4117647059% {
+            40% {
               content: "12";
             }
-            35.2941176471% {
+            45% {
               content: "11";
             }
-            41.1764705882% {
+            50% {
               content: "10";
             }
-            47.0588235294% {
+            55% {
               content: "9";
             }
-            52.9411764706% {
+            60% {
               content: "8";
             }
-            58.8235294118% {
+            65% {
               content: "7";
             }
-            64.7058823529% {
+            70% {
               content: "6";
             }
-            70.5882352941% {
+            75% {
               content: "5";
             }
-            76.4705882353% {
+            80% {
               content: "4";
             }
-            82.3529411765% {
+            85% {
               content: "3";
             }
-            88.2352941176% {
+            90% {
               content: "2";
             }
-            94.1176470588% {
+            95% {
               content: "1";
             }
             100% {
@@ -1025,69 +1047,81 @@ a:hover, a:focus, a:active {
               -webkit-mask: conic-gradient(transparent 0%, #000 0%);
                       mask: conic-gradient(transparent 0%, #000 0%);
             }
-            5.8823529412% {
-              -webkit-mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
-                      mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
+            5% {
+              -webkit-mask: conic-gradient(transparent 5%, #000 5%);
+                      mask: conic-gradient(transparent 5%, #000 5%);
             }
-            11.7647058824% {
-              -webkit-mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
-                      mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
+            10% {
+              -webkit-mask: conic-gradient(transparent 10%, #000 10%);
+                      mask: conic-gradient(transparent 10%, #000 10%);
             }
-            17.6470588235% {
-              -webkit-mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
-                      mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
+            15% {
+              -webkit-mask: conic-gradient(transparent 15%, #000 15%);
+                      mask: conic-gradient(transparent 15%, #000 15%);
             }
-            23.5294117647% {
-              -webkit-mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
-                      mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
+            20% {
+              -webkit-mask: conic-gradient(transparent 20%, #000 20%);
+                      mask: conic-gradient(transparent 20%, #000 20%);
             }
-            29.4117647059% {
-              -webkit-mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
-                      mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
+            25% {
+              -webkit-mask: conic-gradient(transparent 25%, #000 25%);
+                      mask: conic-gradient(transparent 25%, #000 25%);
             }
-            35.2941176471% {
-              -webkit-mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
-                      mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
+            30% {
+              -webkit-mask: conic-gradient(transparent 30%, #000 30%);
+                      mask: conic-gradient(transparent 30%, #000 30%);
             }
-            41.1764705882% {
-              -webkit-mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
-                      mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
+            35% {
+              -webkit-mask: conic-gradient(transparent 35%, #000 35%);
+                      mask: conic-gradient(transparent 35%, #000 35%);
             }
-            47.0588235294% {
-              -webkit-mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
-                      mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
+            40% {
+              -webkit-mask: conic-gradient(transparent 40%, #000 40%);
+                      mask: conic-gradient(transparent 40%, #000 40%);
             }
-            52.9411764706% {
-              -webkit-mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
-                      mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
+            45% {
+              -webkit-mask: conic-gradient(transparent 45%, #000 45%);
+                      mask: conic-gradient(transparent 45%, #000 45%);
             }
-            58.8235294118% {
-              -webkit-mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
-                      mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
+            50% {
+              -webkit-mask: conic-gradient(transparent 50%, #000 50%);
+                      mask: conic-gradient(transparent 50%, #000 50%);
             }
-            64.7058823529% {
-              -webkit-mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
-                      mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
+            55% {
+              -webkit-mask: conic-gradient(transparent 55%, #000 55%);
+                      mask: conic-gradient(transparent 55%, #000 55%);
             }
-            70.5882352941% {
-              -webkit-mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
-                      mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
+            60% {
+              -webkit-mask: conic-gradient(transparent 60%, #000 60%);
+                      mask: conic-gradient(transparent 60%, #000 60%);
             }
-            76.4705882353% {
-              -webkit-mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
-                      mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
+            65% {
+              -webkit-mask: conic-gradient(transparent 65%, #000 65%);
+                      mask: conic-gradient(transparent 65%, #000 65%);
             }
-            82.3529411765% {
-              -webkit-mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
-                      mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
+            70% {
+              -webkit-mask: conic-gradient(transparent 70%, #000 70%);
+                      mask: conic-gradient(transparent 70%, #000 70%);
             }
-            88.2352941176% {
-              -webkit-mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
-                      mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
+            75% {
+              -webkit-mask: conic-gradient(transparent 75%, #000 75%);
+                      mask: conic-gradient(transparent 75%, #000 75%);
             }
-            94.1176470588% {
-              -webkit-mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
-                      mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
+            80% {
+              -webkit-mask: conic-gradient(transparent 80%, #000 80%);
+                      mask: conic-gradient(transparent 80%, #000 80%);
+            }
+            85% {
+              -webkit-mask: conic-gradient(transparent 85%, #000 85%);
+                      mask: conic-gradient(transparent 85%, #000 85%);
+            }
+            90% {
+              -webkit-mask: conic-gradient(transparent 90%, #000 90%);
+                      mask: conic-gradient(transparent 90%, #000 90%);
+            }
+            95% {
+              -webkit-mask: conic-gradient(transparent 95%, #000 95%);
+                      mask: conic-gradient(transparent 95%, #000 95%);
             }
             100% {
               -webkit-mask: conic-gradient(transparent 100%, #000 100%);
@@ -1099,69 +1133,81 @@ a:hover, a:focus, a:active {
               -webkit-mask: conic-gradient(transparent 0%, #000 0%);
                       mask: conic-gradient(transparent 0%, #000 0%);
             }
-            5.8823529412% {
-              -webkit-mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
-                      mask: conic-gradient(transparent 5.8823529412%, #000 5.8823529412%);
+            5% {
+              -webkit-mask: conic-gradient(transparent 5%, #000 5%);
+                      mask: conic-gradient(transparent 5%, #000 5%);
             }
-            11.7647058824% {
-              -webkit-mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
-                      mask: conic-gradient(transparent 11.7647058824%, #000 11.7647058824%);
+            10% {
+              -webkit-mask: conic-gradient(transparent 10%, #000 10%);
+                      mask: conic-gradient(transparent 10%, #000 10%);
             }
-            17.6470588235% {
-              -webkit-mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
-                      mask: conic-gradient(transparent 17.6470588235%, #000 17.6470588235%);
+            15% {
+              -webkit-mask: conic-gradient(transparent 15%, #000 15%);
+                      mask: conic-gradient(transparent 15%, #000 15%);
             }
-            23.5294117647% {
-              -webkit-mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
-                      mask: conic-gradient(transparent 23.5294117647%, #000 23.5294117647%);
+            20% {
+              -webkit-mask: conic-gradient(transparent 20%, #000 20%);
+                      mask: conic-gradient(transparent 20%, #000 20%);
             }
-            29.4117647059% {
-              -webkit-mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
-                      mask: conic-gradient(transparent 29.4117647059%, #000 29.4117647059%);
+            25% {
+              -webkit-mask: conic-gradient(transparent 25%, #000 25%);
+                      mask: conic-gradient(transparent 25%, #000 25%);
             }
-            35.2941176471% {
-              -webkit-mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
-                      mask: conic-gradient(transparent 35.2941176471%, #000 35.2941176471%);
+            30% {
+              -webkit-mask: conic-gradient(transparent 30%, #000 30%);
+                      mask: conic-gradient(transparent 30%, #000 30%);
             }
-            41.1764705882% {
-              -webkit-mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
-                      mask: conic-gradient(transparent 41.1764705882%, #000 41.1764705882%);
+            35% {
+              -webkit-mask: conic-gradient(transparent 35%, #000 35%);
+                      mask: conic-gradient(transparent 35%, #000 35%);
             }
-            47.0588235294% {
-              -webkit-mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
-                      mask: conic-gradient(transparent 47.0588235294%, #000 47.0588235294%);
+            40% {
+              -webkit-mask: conic-gradient(transparent 40%, #000 40%);
+                      mask: conic-gradient(transparent 40%, #000 40%);
             }
-            52.9411764706% {
-              -webkit-mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
-                      mask: conic-gradient(transparent 52.9411764706%, #000 52.9411764706%);
+            45% {
+              -webkit-mask: conic-gradient(transparent 45%, #000 45%);
+                      mask: conic-gradient(transparent 45%, #000 45%);
             }
-            58.8235294118% {
-              -webkit-mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
-                      mask: conic-gradient(transparent 58.8235294118%, #000 58.8235294118%);
+            50% {
+              -webkit-mask: conic-gradient(transparent 50%, #000 50%);
+                      mask: conic-gradient(transparent 50%, #000 50%);
             }
-            64.7058823529% {
-              -webkit-mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
-                      mask: conic-gradient(transparent 64.7058823529%, #000 64.7058823529%);
+            55% {
+              -webkit-mask: conic-gradient(transparent 55%, #000 55%);
+                      mask: conic-gradient(transparent 55%, #000 55%);
             }
-            70.5882352941% {
-              -webkit-mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
-                      mask: conic-gradient(transparent 70.5882352941%, #000 70.5882352941%);
+            60% {
+              -webkit-mask: conic-gradient(transparent 60%, #000 60%);
+                      mask: conic-gradient(transparent 60%, #000 60%);
             }
-            76.4705882353% {
-              -webkit-mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
-                      mask: conic-gradient(transparent 76.4705882353%, #000 76.4705882353%);
+            65% {
+              -webkit-mask: conic-gradient(transparent 65%, #000 65%);
+                      mask: conic-gradient(transparent 65%, #000 65%);
             }
-            82.3529411765% {
-              -webkit-mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
-                      mask: conic-gradient(transparent 82.3529411765%, #000 82.3529411765%);
+            70% {
+              -webkit-mask: conic-gradient(transparent 70%, #000 70%);
+                      mask: conic-gradient(transparent 70%, #000 70%);
             }
-            88.2352941176% {
-              -webkit-mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
-                      mask: conic-gradient(transparent 88.2352941176%, #000 88.2352941176%);
+            75% {
+              -webkit-mask: conic-gradient(transparent 75%, #000 75%);
+                      mask: conic-gradient(transparent 75%, #000 75%);
             }
-            94.1176470588% {
-              -webkit-mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
-                      mask: conic-gradient(transparent 94.1176470588%, #000 94.1176470588%);
+            80% {
+              -webkit-mask: conic-gradient(transparent 80%, #000 80%);
+                      mask: conic-gradient(transparent 80%, #000 80%);
+            }
+            85% {
+              -webkit-mask: conic-gradient(transparent 85%, #000 85%);
+                      mask: conic-gradient(transparent 85%, #000 85%);
+            }
+            90% {
+              -webkit-mask: conic-gradient(transparent 90%, #000 90%);
+                      mask: conic-gradient(transparent 90%, #000 90%);
+            }
+            95% {
+              -webkit-mask: conic-gradient(transparent 95%, #000 95%);
+                      mask: conic-gradient(transparent 95%, #000 95%);
             }
             100% {
               -webkit-mask: conic-gradient(transparent 100%, #000 100%);
