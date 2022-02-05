@@ -1,0 +1,9 @@
+{
+    "name": "SmartDropV2",
+    "lockfileVersion": 2,
+    "requires": true,
+    "packages": {},
+    "dependencies": {
+        "lodash": "^4.17.21"
+    }
+}
